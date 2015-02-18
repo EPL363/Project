@@ -33,78 +33,55 @@
 		window.prettyPrint && prettyPrint()
 	});
 	</script>
-         <script src="jquery-1.9.1.js"></script>
+        
+    
             <script> 
                 $(function(){
-                    $("#stixia").load("stixia_xristi.html"); 
+                    $("#tab1").load("paraskevastikiEteriaForm.html"); 
                 });
                 $(function(){
-                    $("#prosthiki").load("prosthiki_proion1.html"); 
+                    $("#tab2").load("promitheftriaEteriaForm.html"); 
                 });
                 $(function(){
-                    $("#anazitisi").load("anazitisi_xristi.html"); 
+                    $("#tab3").load("stixiaProiontosForm.html"); 
+                });
+                $(function(){
+                    $("#tab4").load("stixiaChimikonOusion.html"); 
+                });
+                $(function(){
+                    $("#tab5").load("stixiaChimikonOusion.html"); 
                 });
             </script> 
-    <style type="text/css">
-            html {
-                overflow: hidden;
-                position: absolute;
-                height:100%;
-            }
-    </style>    
+
+    
     </head>
 
-    <body >
-         <div class="container">
-           <div class="row clearfix">
-              <div class="col-md-12 column" >
-                  <div class="col-xs-1"></div>
-                   <div class="col-xs-11">
-               <img  src="banner_gr_Laa.png"  height="98">
-                  </div>
-               </div>
-             </div>
-        </div>
-
-        
-       
-        <div class="row" style="text-align:center">
-            
+    <body>
+        <div class="row">
 			<section id="wizard" class="col-md-12">
 				<div id="rootwizard">
 					<div class="navbar">
-					  <div class="navbar-inner" >
-                          <div class="col-md-2"></div>
-                            <ul >
+					  <div class="navbar-inner">
+					    
+                            <ul>
                                 <li><a href="#tab1" data-toggle="tab">1. Παρασκευάστρια Εταιρία</a></li>
                                 <li><a href="#tab2" data-toggle="tab">2. Προμηθεύτρια Εταιρία</a></li>
                                 <li><a href="#tab3" data-toggle="tab">3.Στοιχεία Χημικού Προιόντος</a></li>
                                 <li><a href="#tab4" data-toggle="tab">4.Χημικές Ουσίες</a></li>
-                                
+                                <li><a href="#tab5" data-toggle="tab">5.Αναρτηση ΔΔΑ και Ετικέτα</a></li>
                             </ul>
 					  
 					  </div>
 					</div>
                     
-					<div class="tab-content" style="height:100%; text-align:center;">
-					    <div class="tab-pane" id="tab1" style="text-align:center;">
-                            <div class="col-md-1"></div>
-                            <div class="embed-responsive embed-responsive-16by9"><iframe   src="paraskevastikiEteriaApotelesmata.html"  class="embed-responsive-item"></iframe></div>
-					    </div>
-					    <div class="tab-pane" id="tab2"  style="text-align:center;">
-                            <div class="col-md-1"></div>
-					      <div class="embed-responsive embed-responsive-16by9"><iframe src="promitheftriaEteriaApotelesmata.html"  class="embed-responsive-item"></iframe></div>
-					    </div>
-						<div class="tab-pane" id="tab3" style="text-align:center;">
-                            <div class="col-md-1"></div>
-							<div class="embed-responsive embed-responsive-16by9"><iframe src="stixiaProiontosApotelesmata.html"  class="embed-responsive-item"></iframe></div>
-					    </div>
-						<div class="tab-pane" id="tab4" style="text-align:center;">
-                            <div class="col-md-1"></div>
-							<div class="embed-responsive embed-responsive-16by9"><iframe src="stixiaChimikonOusionApotelesmata.html"  class="embed-responsive-item"></iframe></div>
-					    </div>
+					<div class="tab-content">
+					    <div class="tab-pane" id="tab1"></div>
+					    <div class="tab-pane" id="tab2"></div>
+						<div class="tab-pane" id="tab3"></div>
+						<div class="tab-pane" id="tab4"></div>
+						<div class="tab-pane" id="tab5"></div>
 						
-                      
+                      </div> 
                     <div class="col-md-12">
 						<ul class="pager wizard">
 							<li class="previous first" style="display:none;"><a href="#">First</a></li>
@@ -113,9 +90,6 @@
 						  	<li class="next"><a href="#">Next</a></li>
 						</ul>
 					 </div>
-                                                
-                        
-                    </div>
 				</div>
 			</section>
 	</div>
