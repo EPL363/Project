@@ -42,12 +42,16 @@
                     $("#chemicalSub").load("stixiaChimikonOusionApotelesmata.html"); 
                 });
             </script> 
-
+<style>
+    body{
+        overflow: scroll;
+    }
+</style>
 
     </head>
    
     
-    <body style="overflow: visible;height:100%;">
+    <body style=" height:100%;">
     
         <div class="container">
 
@@ -57,7 +61,7 @@
             <div class="col-md-12 column" >
                 <div class="col-md-9 column" ></div>
             <a href="#">Τροποποίηση /</a>
-            <a href="#" ata-toggle="modal" data-target="#chemicalModal"> Επικαιροποίηση</a>
+            <a href="#" data-toggle="modal" data-target="#info-modal"> Επικαιροποίηση</a>
             </div>
                 <div class="col-md-12 column">
                     
@@ -81,12 +85,13 @@
                 </div>
            
         </div>
+           
                         <!-- Modal -->
-            <div class="modal fade bs-example-modal-lg" id="chemicalModal" tabindex="-1" role="dialog" aria-labelledby="chemicalModalLabel" aria-hidden="true">
+            <div class="modal fade bs-example-modal-lg" id="info-modal" tabindex="-1" role="dialog" aria-labelledby="chemicalModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h4 class="modal-title" id="chemicalModalLabel">Πληροφορίες Σχετικά με την Επικαιροποίηση Στοιχείων Προϊόντος</h4>
+                    <h4 class="modal-title" id="chemicalModalLabel" style="color: #2CA4B0; font-family: 'Helvetica Neue', sans-serif;  font-weight: 100; letter-spacing: 1px; padding: 0 0 5px;">Πληροφορίες Σχετικά με την Επικαιροποίηση Στοιχείων Προϊόντος</h4>
                   </div>
                   <div class="modal-body">
                     <!-------------------------------------------------------------------------------------------------------------------->
@@ -97,10 +102,10 @@
                                     <div class="row">
                                         <label  for="chemical-Name">Παρακαλώ εξηγείστε εν συντομία τον λόγο για τον οποίο επιθυμείτε να <br> γίνει επικαιροποίηση</label>
                                     </div>
-                                        </br>
+                                        
                                         </br>
                                     <div class="row">
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-7">
                                             <textarea class="form-control" rows="6" id="constCompany-info"></textarea>
                                         </div>
                                         
@@ -120,6 +125,8 @@
                 </div>
               </div>
             </div>
+                
+        </div>
     </body>
 </html>
     
