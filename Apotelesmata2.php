@@ -30,6 +30,7 @@
         <script src="jquery-1.9.1.js"></script>
             <script> 
                 $(function(){
+                    window.alert("a");
                     $("#Constractor").load("paraskevastikiEteriaApotelesmata.html"); 
                 });
                 $(function(){

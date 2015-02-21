@@ -19,24 +19,6 @@
 	    <script type="text/javascript" src="js/bootstrap.min.js"></script>
 	    <script type="text/javascript" src="js/scripts.js"></script>
             
-        <script src="jquery-1.9.1.js"></script>
-        <script> 
-            $(function(){
-                $("#stixia").load("stixia_xristi.html"); 
-            });
-            $(function(){
-                $("#prosthiki").load("prosthiki_proion1.html"); 
-            });
-            $(function(){
-                $("#anazitisi").load("anazitisi_xristi.html"); 
-            });
-        </script> 
-
-        <style>
-        a{
-        
-        }
-        </style>
     </head>
    
    
@@ -65,9 +47,9 @@
                         <li role="presentation"><a href="#anazitisi" aria-controls="anazitisi" role="tab" data-toggle="tab">Αναζήτηση Προιόντος</a></li>
                     </ul>
                     <div class="tab-content" style="height:100%">
-                        <div role="tabpanel" class="tab-pane active" id="stixia"></div> 
-                        <div role="tabpanel" class="tab-pane" id="prosthiki"></div>
-                        <div role="tabpanel" class="tab-pane" id="anazitisi"></div>
+                        <div role="tabpanel" class="tab-pane active" id="stixia"><?php include 'stixia_xristi.php';?></div> 
+                        <div role="tabpanel" class="tab-pane" id="prosthiki"><?php include 'prosthiki_proion1.php';?></div>
+                        <div role="tabpanel" class="tab-pane" id="anazitisi"><?php include 'anazitisi_xristi.php';?></div>
                     </div>
                 </div>
             </div>

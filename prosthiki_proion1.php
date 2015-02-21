@@ -19,30 +19,15 @@
 	    <script src="js/jquery.bootstrap.wizard.js"></script>
 	    <script src="js/prettify.js"></script>
         
+        <script src="jquery.js"></script>
+        
         <script>
         $(document).ready(function() {
             $('#rootwizard').bootstrapWizard();
             window.prettyPrint && prettyPrint()
         });
         </script>
-        
-        <script> 
-            $(function(){
-                $("#tab1").load("paraskevastikiEteriaForm.html"); 
-            });
-            $(function(){
-                $("#tab2").load("promitheftriaEteriaForm.html"); 
-            });
-            $(function(){
-                $("#tab3").load("stixiaProiontosForm.html"); 
-            });
-            $(function(){
-                $("#tab4").load("stixiaChimikonOusion.html"); 
-            });
-            $(function(){
-                $("#tab5").load("prosthikiDDA.html"); 
-            });
-        </script> 
+       
     </head>
 
     <body>
@@ -62,11 +47,11 @@
 					</div>
                     
 					<div class="tab-content">
-					    <div class="tab-pane" id="tab1"></div>
-					    <div class="tab-pane" id="tab2"></div>
-						<div class="tab-pane" id="tab3"></div>
-						<div class="tab-pane" id="tab4"></div>
-						<div class="tab-pane" id="tab5"></div>
+					    <div class="tab-pane" id="tab1"><?php include 'paraskevastikiEteriaForm.php';?></div>
+					    <div class="tab-pane" id="tab2"><?php include 'promitheftriaEteriaForm.php';?></div>
+						<div class="tab-pane" id="tab3"><?php include 'stixiaProiontosForm.php';?></div>
+						<div class="tab-pane" id="tab4"><?php include 'stixiaChimikonOusion.php';?></div>
+						<div class="tab-pane" id="tab5"><?php include 'prosthikiDDA.php';?></div>
 				    </div> 
                     
                     <div class="col-md-12">
