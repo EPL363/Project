@@ -48,7 +48,7 @@
                     </ul>
                     <div class="tab-content" style="height:100%">
                         <div role="tabpanel" class="tab-pane active" id="stixia"><?php include 'stixia_xristi.php';?></div> 
-                        <div role="tabpanel" class="tab-pane" id="prosthiki"><?php include 'prosthiki_proion1.php';?></div>
+                        <div role="tabpanel" class="tab-pane" id="prosthiki"><?php include 'prosthiki_proion2.php';?></div>
                         <div role="tabpanel" class="tab-pane" id="anazitisi"><?php include 'anazitisi_xristi.php';?></div>
                     </div>
                 </div>

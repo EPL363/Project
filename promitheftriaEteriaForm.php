@@ -32,7 +32,8 @@
                 var newTr = document.createElement('tr');
                 var name = $('#suplCompany-Name').val();
                 newTr.setAttribute('id','entry'+intTextBox);
-                newTr.innerHTML ='<td><strong>'+intTextBox+'</strong></td><td>'+name+'</td><td><input type="image" src="Deep_Edit.png" data-toggle="modal" data-target="#suplCompanyModal"></td><td><input type="image" src="delete-icon.png" onclick= "removeCompanyID('+intTextBox+');"></td>'; 
+                newTr.innerHTML ='<td><strong>'+intTextBox+'</strong></td><td>'+name+'</td><td><input type="image" src="Deep_Edit.png" data-toggle="modal" data-target="#suplCompanyModal"></td><td><input type="image" src="delete-icon.png" onclick= "removeCompanyID('+intTextBox+');"></td>';
+
                 contentID.appendChild(newTr);
                 
                     

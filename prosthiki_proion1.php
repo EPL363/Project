@@ -19,12 +19,11 @@
 	    <script src="js/jquery.bootstrap.wizard.js"></script>
 	    <script src="js/prettify.js"></script>
         
-        <script src="jquery.js"></script>
         
         <script>
         $(document).ready(function() {
-            $('#rootwizard').bootstrapWizard();
-            window.prettyPrint && prettyPrint()
+           $('#rootwizard').bootstrapWizard({'nextSelector': '.button-next', 'previousSelector': '.button-previous'});
+		  window.prettyPrint && prettyPrint()
         });
         </script>
        

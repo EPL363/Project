@@ -48,7 +48,7 @@
                 </div>
         </div>
         
-        
+        <form method="post" action="a.php">
         <div class="col-md-12 column" id="paraskevastiki_form"> 
             
                 <h3>Στοιχεία Παρασκευαστικής Εραιρίας</h3>
@@ -62,7 +62,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="constCompany-Name">Επωνυμία Επιχείρησης:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" id="constCompany-Name" type="text">
+                        <input class="form-control" id="constCompany-Name" name="constCompany-Name" type="text">
                     </div>
                 </div>
                 
@@ -71,7 +71,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="constCompany-CommercialName">Εμπορική Επωνυμία Επιχείρησης:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" id="constCompany-CommercialName" type="text">
+                        <input class="form-control" id="constCompany-CommercialName" name="constCompany-CommercialName"type="text">
                     </div>
                 </div>
 
@@ -80,7 +80,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="constCompany-OtherName">Άλλη Επωνυμία:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" id="constCompany-OtherName" type="text">
+                        <input class="form-control" id="constCompany-OtherName" name="constCompany-OtherName" type="text">
                     </div>
                 </div>
 
@@ -89,7 +89,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="constCompany-legalForm">Νομική Μορφή:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" id="constCompany-legalForm" type="text">
+                        <input class="form-control" id="constCompany-legalForm" name="constCompany-legalForm" type="text">
                     </div>
                 </div>
 
@@ -98,7 +98,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="constCompany-CEO">Όνομα Διευθυντή:</label>
                     <div class="col-sm-4 ">
-                        <input class="form-control" id="constCompany-CEO" type="text">
+                        <input class="form-control" id="constCompany-CEO" name="constCompany-CEO" type="text">
                     </div>
                 </div>
 
@@ -107,7 +107,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="constCompany-Address">Διεύθυνση:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" id="constCompany-Address" type="text">
+                        <input class="form-control" id="constCompany-Address" name="constCompany-Address" type="text">
                     </div>
                 </div>
 
@@ -116,7 +116,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="constCompany-PC">T.K. :</label>
                     <div class="col-sm-2">
-                        <input class="form-control" id="constCompany-PC" type="number">
+                        <input class="form-control" id="constCompany-PC" name="constCompany-PC" type="number">
                     </div>
                 </div>
 
@@ -502,7 +502,9 @@
                 
                 <br><br>
             </div>
+            <input type="submit">
         </div>
+            </form>
     </div>
     
     
