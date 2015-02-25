@@ -43,7 +43,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-4" for="chemicalProduct-Name">Χημική Ονομασία:</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="chemicalProduct-Name" />
+                        <input type="text" class="form-control" name="chemicalProduct-Name" id="chemicalProduct-Name" />
                     </div>
                 </div>
                   
@@ -52,7 +52,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-4" for="chemicalProduct-CommName">Εμπορική Ονομασία:</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="chemicalProduct-CommName" />
+                        <input type="text" class="form-control" name="chemicalProduct-CommName" id="chemicalProduct-CommName" />
                     </div>
                 </div>
                    
@@ -61,7 +61,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-4" for="chemicalProduct-use">Προβλεπόμενες Χρήσεις:</label>
                     <div class="col-sm-6">
-                        <textarea type="text" class="form-control" rows="5" id="chemicalProduct-use" /></textarea>
+                        <textarea type="text" class="form-control" rows="5" name="chemicalProduct-use" id="chemicalProduct-use" /></textarea>
                     </div>
                 </div>
                   
@@ -70,7 +70,7 @@
                  <div class="form-group">
                     <label class="control-label col-sm-4" for="chemicalProduct-extraChar">Πρόσθετα Χαρακτηριστικά ή άλλες επιπρόσθετες πληροφορίες για το μείγμα</label>
                     <div class="col-sm-6">
-                        <textarea type="text" class="form-control" rows="5" id="chemicalProduct-extraChar" /></textarea>
+                        <textarea type="text" class="form-control" rows="5" name="chemicalProduct-extraChar" id="chemicalProduct-extraChar" /></textarea>
                     </div>
                 </div>
                   
@@ -79,7 +79,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-4" for="chemicalProduct-state">Κατάσταση:</label>
                     <div class="col-sm-6">
-                        <select class="form-control" id="chemicalProduct-state">
+                        <select class="form-control" name="chemicalProduct-state" id="chemicalProduct-state">
                           <option value="0">Αέριο</option>
                           <option value="1">Υγρό</option>
                           <option value="2">Στερεό</option>
@@ -92,7 +92,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-4" for="chemicalProduct-storageAdd">Διεύθυνση Αποθήκευσης Μείγματος:</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="chemicalProduct-storageAdd" />
+                        <input type="text" class="form-control" name="chemicalProduct-storageAdd" id="chemicalProduct-storageAdd" />
                     </div>
                 </div>
                  
@@ -101,7 +101,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-4" for="chemicalProduct-SDS">Στοιχεία Ταξινόμησης και Επισήμανσης σύμφωνα με το Δελτίο Δεδομένων Ασφαλείας (SDS)</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="chemicalProduct-SDS" />
+                        <input type="text" class="form-control" name="chemicalProduct-SDS" id="chemicalProduct-SDS" />
                     </div>
                 </div>
         
@@ -110,7 +110,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-4" for="chemicalProduct-CPL">Στοιχεία Ταξινόμησης και Επισήμανσης σύμφωνα με τον Κανονισμό 1272/2008 (Κανονισμός CLP)(αν είναι διαθέσιμα)</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="chemicalProduct-CPL" />
+                        <input type="text" class="form-control" name="chemicalProduct-CPL" id="chemicalProduct-CPL" />
                     </div>
                 </div>
         
@@ -119,7 +119,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-4" for="chemicalProduct-V">Όγκος Συσκευασίας:</label>
                     <div class="col-sm-6">
-                        <input type="number" class="form-control" id="chemicalProduct-V"/>
+                        <input type="number" class="form-control" name="chemicalProduct-V" id="chemicalProduct-V"/>
                     </div>
                 </div>
                  

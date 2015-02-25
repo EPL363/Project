@@ -37,75 +37,75 @@
                        
                         <br>
                        
-                        <form class="form-horizontal" role="form" id="user-data-form">
+                        <form class="form-horizontal" role="form" name="user-data-form" id="user-data-form">
                             
                             <div class="form-group">
                                 <label class="control-label col-sm-1" for="user-name">Όνομα:</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="user-name" />
+                                    <input type="text" class="form-control" name="user-name" id="user-name" />
                                 </div>
                             </div>
                     
                             <div class="form-group">
                                 <label class="control-label col-sm-1" for="user-surname">Επώνυμο:</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="user-surname"/>
+                                    <input type="text" class="form-control" name="user-surname" id="user-surname"/>
                                 </div>
                             </div>
                           
                             <div class="form-group">
                                 <label class="control-label col-sm-1" for="user-username">Username:</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="user-username" />
+                                    <input type="text" class="form-control" name="user-username" id="user-username" />
                                 </div>
                             </div>
                         
                             <div class="form-group">
                                 <label class="control-label col-sm-1" for="user-password">Κωδικός:</label>
                                 <div class="col-sm-4">
-                                    <input type="password" class="form-control" id="user-password" />
+                                    <input type="password" class="form-control" name="user-password" id="user-password" />
                                 </div>
                             </div>
                         
                             <div class="form-group">
                                 <label class="control-label col-sm-1" for="user-email">Email:</label>
                                 <div class="col-sm-4">
-                                    <input type="email" class="form-control" id="user-email" />
+                                    <input type="email" class="form-control" name="user-email" id="user-email" />
                                 </div> 
                             </div> 
                             
                             <div class="form-group">
                                 <label class="control-label col-sm-1" for="user-address">Διεύθυνση:</label>                  
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="user-address" />
+                                    <input type="text" class="form-control" name="user-address" id="user-address" />
                                 </div>
                             </div>  
                             
                             <div class="form-group">
                                 <label class="control-label col-sm-1" for="user-city">Πόλη:</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="user-city" />
+                                    <input type="text" class="form-control" name="user-city" id="user-city" />
                                 </div>
                             </div>  
                             
                             <div class="form-group">
                                 <label class="control-label col-sm-1" for="user-pc">Τ.Κ:</label>
                                 <div class="col-sm-3">
-                                    <input type="number" class="form-control" id="user-pc" />
+                                    <input type="number" class="form-control" name="user-pc" id="user-pc" />
                                 </div>
                             </div>
                             
                             <div class="form-group">
                                 <label class="control-label col-sm-1" for="user-phone">Τηλέφωνο:</label>
                                 <div class="col-sm-4">
-                                    <input type="number" class="form-control" id="user-phone" />
+                                    <input type="number" class="form-control" name="user-phone" id="user-phone" />
                                 </div>
                             </div>
                             
                             <div class="form-group">
                                 <label class="control-label col-sm-1" for="user-fax">Φάξ:</label>
                                 <div class="col-sm-4">
-                                    <input type="number" class="form-control" id="user-fax" />
+                                    <input type="number" class="form-control" name="user-fax" id="user-fax" />
                                 </div>
                             </div> 
                             
@@ -132,63 +132,63 @@
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="company-name">Επων. Εταιρίας:</label>
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" id="company-name" />
+                                        <input type="text" class="form-control" name="company-name" id="company-name" />
                                     </div>
                                 </div>
                                 
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="company-legal-form">Νομική Μορφή:</label>
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" id="company-legal-form"/>
+                                        <input type="text" class="form-control" name="company-legal-form" id="company-legal-form"/>
                                     </div>
                                 </div>
                         
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="company-email">Email</label>
                                     <div class="col-sm-4">
-                                        <input type="email" class="form-control" id="company-email" />
+                                        <input type="email" class="form-control" name="company-email" id="company-email" />
                                     </div> 
                                 </div>
                                 
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="company-address">Διεύθυνση</label>
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" id="company-address" />
+                                        <input type="text" class="form-control" name="company-address" id="company-address" />
                                     </div>
                                 </div>  
                                 
                                 <div class="form-group">
                                       <label class="control-label col-sm-2" for="company-city">Πόλη</label>
                                       <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="company-city" />
+                                            <input type="text" class="form-control" name="company-city" id="company-city" />
                                       </div>
                                 </div>   
                                 
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="company-pc">Τ.Κ.</label>
                                     <div class="col-sm-4">
-                                        <input type="number" class="form-control" id="company-pc" />
+                                        <input type="number" class="form-control" name="company-pc" id="company-pc" />
                                     </div>
                                 </div>
                                 
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="company-phone">Τηλέφωνο</label>
                                     <div class="col-sm-4">
-                                        <input type="number" class="form-control" id="company-phone" />
+                                        <input type="number" class="form-control" name="company-phone" id="company-phone" />
                                     </div>
                                 </div>
                                 
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="company-fax">Φάξ</label>
                                     <div class="col-sm-4">
-                                        <input type="number" class="form-control" id="company-fax" />
+                                        <input type="number" class="form-control" name="company-fax" id="company-fax" />
                                     </div>
                                 </div>
                                    
                                 <div class="form-group">
                                     <label class="control-label col-sm-2" for="company-info">Άλλες Πληροφορίες:</label>
                                     <div class="col-sm-4">
-                                        <textarea type="fax" class="form-control" rows="5" id="company-info" /></textarea>
+                                        <textarea type="fax" class="form-control" rows="5" name="company-info" id="company-info" /></textarea>
                                     </div>
                                 </div>
 
@@ -203,7 +203,7 @@
             <div class="row">
                 <div class="form-group">
                     <div class="col-sm-offset-1">
-                        <button type="submit" class="btn btn-primary" >Τροποποίηση</button>  
+                        <button type="submit" name="submit" class="btn btn-primary" >Τροποποίηση</button>  
                     </div>   
                 </div>
             </div>

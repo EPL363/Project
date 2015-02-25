@@ -41,7 +41,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="suplCompany-Name">Επωνυμία Επιχείρησης:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" id="suplCompany-Name" type="text">
+                        <input class="form-control" name= "suplCompany-Name" id="suplCompany-Name" type="text">
                     </div>
                 </div>
                 
@@ -50,7 +50,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="suplCompany-legalForm">Νομική Μορφή:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" id="suplCompany-legalForm" type="text">
+                        <input class="form-control" name= "suplCompany-legalForm" id="suplCompany-legalForm" type="text">
                     </div>
                 </div>
 
@@ -59,7 +59,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="suplCompany-CEO">Όνομα Διευθυντή:</label>
                     <div class="col-sm-4 ">
-                        <input class="form-control" id="suplCompany-CEO" type="text">
+                        <input class="form-control" name= "suplCompany-CEO" id="suplCompany-CEO" type="text">
                     </div>
                 </div>
 
@@ -68,7 +68,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="suplCompany-Address">Διεύθυνση:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" id="suplCompany-Address" type="text">
+                        <input class="form-control" name= "suplCompany-Address" id="suplCompany-Address" type="text">
                     </div>
                 </div>
 
@@ -77,7 +77,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="suplCompany-PC">T.K. :</label>
                     <div class="col-sm-2">
-                        <input class="form-control" id="suplCompany-PC" type="number">
+                        <input class="form-control" name= "suplCompany-PC" id="suplCompany-PC" type="number">
                     </div>
                 </div>
 
@@ -86,7 +86,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="suplCompany-City">Πόλη:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" id="suplCompany-City" type="text">
+                        <input class="form-control" name= "suplCompany-City" id="suplCompany-City" type="text">
                     </div>
                 </div>
 
@@ -95,7 +95,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="suplCompany-Phone">Τηλέφωνο:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" id="suplCompany-Phone" type="number">
+                        <input class="form-control" name= "suplCompany-Phone" id="suplCompany-Phone" type="number">
                     </div>
                 </div>
 
@@ -104,7 +104,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="suplCompany-fax">Φάξ:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" id="suplCompany-fax" type="number">
+                        <input class="form-control" name= "suplCompany-fax" id="suplCompany-fax" type="number">
                     </div>
                 </div>
 
@@ -113,7 +113,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="suplCompany-email">Ηλεκτρονικό Ταχυδρομείο:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" id="suplCompany-email" type="email">
+                        <input class="form-control" name= "suplCompany-email" id="suplCompany-email" type="email">
                     </div>
                 </div>
 
@@ -122,7 +122,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="suplCompany-info">Άλλες Πληροφορίες:</label>
                     <div class="col-sm-4">
-                        <textarea class="form-control" rows="5" id="suplCompany-info"></textarea>
+                        <textarea class="form-control" rows="5" name= "suplCompany-info" id="suplCompany-info"></textarea>
                     </div>
                 </div>
 
@@ -139,7 +139,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="constEmpl-name">Όνομα:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" id="constEmpl-name" type="text">
+                        <input class="form-control" name= "constEmpl-name" id="constEmpl-name" type="text">
                     </div>
                 </div>
 
@@ -148,7 +148,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="constEmpl-Surname">Επίθετο:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" id="constEmpl-Surname" type="text">
+                        <input class="form-control" name= "constEmpl-Surname" id="constEmpl-Surname" type="text">
                     </div>
                 </div>
                 
@@ -157,7 +157,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="constEmpl-address">Διεύθυνση:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" id="constEmpl-address" type="text">
+                        <input class="form-control" name= "constEmpl-address" id="constEmpl-address" type="text">
                     </div>
                 </div>
                 
@@ -166,7 +166,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="constEmpl-pc">T.K. :</label>
                     <div class="col-sm-2">
-                        <input class="form-control" id="constEmpl-pc" type="number">
+                        <input class="form-control" name= "constEmpl-pc" id="constEmpl-pc" type="number">
                     </div>
                 </div>
                 
@@ -175,7 +175,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="constEmpl-city">Πόλη:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" id="constEmpl-city" type="text">
+                        <input class="form-control" name= "constEmpl-city" id="constEmpl-city" type="text">
                     </div>
                 </div>
                     
@@ -184,7 +184,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="constEmpl-phone">Τηλέφωνο:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" id="constEmpl-phone" type="number">
+                        <input class="form-control" name= "constEmpl-phone" id="constEmpl-phone" type="number">
                     </div>
                 </div>
                 
@@ -193,7 +193,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="constEmpl-fax">Φάξ:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" id="constEmpl-fax" type="number">
+                        <input class="form-control" name= "constEmpl-fax" id="constEmpl-fax" type="number">
                     </div>
                 </div>
                     
@@ -202,7 +202,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="constEmpl-email">Ηλεκτρονικό Ταχυδρομείο:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" id="constEmpl-email" type="email">
+                        <input class="form-control" name= "constEmpl-email" id="constEmpl-email" type="email">
                     </div>
                 </div>
                 
@@ -211,7 +211,7 @@
         </div>
         <br><br>
         <div class="col-md-6 column">
-                <input id="Buttonadd" class="btn btn-info" type="button" onclick="addCompany();" value="Αποθήκευση"  name="addentry" />
+                <input  id="Buttonadd" class="btn btn-info" type="button" onclick="addCompany();" value="Αποθήκευση"  name="addentry" />
         </div>
     </div>
     

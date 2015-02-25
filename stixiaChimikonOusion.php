@@ -64,12 +64,13 @@
     </head>
     
     <body>
-    
+       
+    <!--------------------------------------------------------------------------------------------------------->
         <div class="container">
             
             <div class="row clearfix" >
                 <div class="col-md-12 column" >
-                    <table class="table table-hover" id="chemicalTable">
+                    <table class="table table-hover" name="chemicalTable" id="chemicalTable">
                         <tr>
                             <th>#</th>
                             <th>Χημική  Ουσία</th>
@@ -85,70 +86,72 @@
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#chemicalModal">Εισαγωγή στοιχείου</button>
 
             <!-- Modal -->
-            <div class="modal fade bs-example-modal-lg" id="chemicalModal" tabindex="-1" role="dialog" aria-labelledby="chemicalModalLabel" aria-hidden="true">
+            <div class="modal fade bs-example-modal-lg" name="chemicalModal" id="chemicalModal" tabindex="-1" role="dialog" aria-labelledby="chemicalModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h4 class="modal-title" id="chemicalModalLabel">Χημική Σύνθεση Μείγματος</h4>
+                    <h4 class="modal-title" name="" id="chemicalModalLabel">Χημική Σύνθεση Μείγματος</h4>
                   </div>
                   <div class="modal-body">
                     <!-------------------------------------------------------------------------------------------------------------------->
                         <div class="container">
+                            
                             <div class="col-md-9 column"> 
-                                <form class="form-horizontal" role="form">
-                                    <div class="form-group">
+                                <form class="form-horizontal" role="form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                                    <div class="form-group" >
                                         <label class="control-label col-sm-3" for="chemical-Name">Χημική ουσία</label>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="chemical-Name" />
+                                            <input type="text" class="form-control" name="chemical-Name" id="chemical-Name" />
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-sm-3" for="chemical-CAS">Αριθμός CAS</label>
+                                        <label class="control-label col-sm-3" for="chemical-CAS" >Αριθμός CAS</label>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="chemical-CAS" />
+                                            <input type="text" class="form-control"  name="chemical-CAS" id="chemical-CAS" />
+                                            
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label col-sm-3" for="chemical-EINECS">Αριθμός EC/EINECS</label>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="chemical-EINECS" />
+                                            <input type="text" class="form-control" name="chemical-EINECS" id="chemical-EINECS" />
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label col-sm-3" for="chemical-IUPAC">Ονοματολογία κατά IUPAC</label>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="chemical-IUPAC" />
+                                            <input type="text" class="form-control" name="chemical-IUPAC" id="chemical-IUPAC" />
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label col-sm-3" for="chemical-otherName">Άλλη Ονοματολογία</label>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="chemical-otherName" />
+                                            <input type="text" class="form-control" name="chemical-otherName" id="chemical-otherName" />
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label col-sm-3" for="chemical-weight">Ακριβής συγκέντρωση χημικής ουσίας στο μείγμα                                                                  (βάρος κατά βάρος)</label>
                                         <div class="col-sm-4">
-                                            <input type="number" class="form-control" id="chemical-weight" />
+                                            <input type="number" class="form-control" name="chemical-weight" id="chemical-weight" />
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label col-sm-3" for="chemical-CLP">Ταξινόμηση και Επισήμανση σύμφωνα με τον Κανονισμό 1272/2008 (Κανονισμός CLP)</label>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" id="chemical-CLP" />
+                                            <input type="text" class="form-control" name="chemical-CLP" id="chemical-CLP" />
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label col-sm-3" for="chemical-enarmonismeni">Εναρμονισμένη ταξινόμηση</label>
                                         <div class="col-sm-4">
-                                            <select class="form-control" id="chemical-enarmonismeni">
+                                            <select class="form-control" name="chemical-enarmonismeni" id="chemical-enarmonismeni">
                                                 <option value="1">Ναι</option>
                                                 <option value="0">Όχι</option>
                                             </select>
@@ -162,20 +165,13 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="addElement();" name="addentry">Save changes</button>
+                    <button type="button"  class="btn btn-primary" data-dismiss="modal" onclick="addElement();" name="addentry">Save changes</button>
                   </div>
                 </div>
               </div>
             </div>
-            
-            
-            
-            
-        
-            
-
-        
       </div>
+       
     
     </body>
 
