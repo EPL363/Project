@@ -123,6 +123,24 @@
                                         </div>
 
                                         <br><br>
+                                        
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label" for="suplCompany-CommercialName">Εμπορική Επωνυμία Επιχείρησης:</label>
+                                            <div class="col-sm-4">
+                                                <input class="form-control" id="suplCompany-CommercialName" name="constCompany-CommercialName"type="text">
+                                            </div>
+                                        </div>
+
+                                        <br><br>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label" for="suplCompany-OtherName">Άλλη Επωνυμία:</label>
+                                            <div class="col-sm-4">
+                                                <input class="form-control" id="suplCompany-OtherName" name="constCompany-OtherName" type="text">
+                                            </div>
+                                        </div>
+
+                                        <br><br>
 
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label" for="suplCompany-legalForm">Νομική Μορφή:</label>

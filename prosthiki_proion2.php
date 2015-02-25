@@ -31,7 +31,7 @@
                             <form id="SubscriptionWizard" action="" method="post">
                                 <table class="table table-hover" cellpadding="5" cellspacing="0" id="HeaderTable">
                                     <tr>
-                                        <td id="HeaderTableStep1" font color="#66CCFF">1. Παρασκευάστρια Εταιρία</td>
+                                        <td id="HeaderTableStep1" style="color:#66CCFF">1. Παρασκευάστρια Εταιρία</td>
                                         <td id="HeaderTableStep2">2. Προμηθεύτρια Εταιρία</td>
                                         <td id="HeaderTableStep3" >3.Στοιχεία Χημικού Προιόντος </td>
                                         <td id="HeaderTableStep4" >4.Χημικές Ουσίες</td>
