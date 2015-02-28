@@ -4,12 +4,12 @@
     <body>
 <?php 
 
-    $servername = "localhost";
-    $username = "";
-    $password = "";
+    $db = 'epl363';
+    $username = 'root';
+    $password = '';
 
     // Create connection
-    $conn = new mysqli($servername, $username, $password);
+    $conn = new mysqli('localhost', $username, $password, $db);
 
     // Check connection
     if ($conn->connect_error) {
@@ -38,6 +38,10 @@
     $CompTel="";
     $CompFax="";
     $description="";
+    $CompCommer="";
+    $CompOtherN="";
+    $CompCEO="";
+    $CompCountry="";
 
 
 
@@ -63,17 +67,29 @@
         $CompAddres=$_POST["CompAddres"];
         $CompCity=$_POST["CompCity"];
         $CompPC=$_POST["CompPC"];
-        $CompCountry=$_POST["CompCountry"];
         $CompTel=$_POST["CompTel"];
         $CompFax=$_POST["CompFax"];
         $description=$_POST["description"];
+        $CompCommer=$_POST["CompCommer"];
+        $CompOtherN=$_POST["CompOtherN"];
+        $CompCEO=$_POST["CompCEO"];
+        $CompCountry=$_POST["CompCountry"];
+    
+        echo $CompCountry;
         
-        $sql = "INSERT INTO MyGuests (firstname, lastname, email) VALUES ('John', 'Doe', 'john@example.com')";
+        $sql = "INSERT INTO ComPerson (Name, Surname, Address, Telephone, Fax, Email, PostCode, City) VALUES ('$comName',  '$comSName','$comAddress', '$comTel' ,'$comFax', '$comEmail' , '$comPC','$comPoli' );";
+        
+       $sql2 = "INSERT INTO Company (Company_Name, Lequl_State, Address, PostCode, City, Telephone, Fax, Email, info, Person, Commersial_Name, Other_Name, CEO, Country) VALUES ('$CompName',  '$CompLF', '$CompAddres' ,'$CompPC', '$CompCity' , '$CompTel','$CompFax', '$CompEmail', '$description','$comTel', '$CompCommer', '$CompOtherN', '$CompCEO', '$CompCEO');";
+        
+        $sql3 = "INSERT INTO Users (Username, Password, Company) VALUES ('$userName','$pass','$CompName');";
+        
 
-        if ($conn->query($sql) === TRUE) {
-            echo "New record created successfully";
+        if ($conn->query($sql) === TRUE and $conn->query($sql2) === TRUE and $conn->query($sql3) === TRUE) {
+            echo "New record created successfully ";
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
+            echo "Error: " . $sql2 . "<br>" . $conn->error;
+            echo "Error: " . $sql3 . "<br>" . $conn->error;
         }
 
         $conn->close();     

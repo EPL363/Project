@@ -257,6 +257,37 @@
                 <div class="col-sm-12">
                     <div class="col-sm-3"></div>
                     <div class="col-sm-3">
+                        <label for="CompCommer">Εμπορική Επωνυμία Εταιρίας:</label>
+                    </div>
+                    <div class="col-sm-3">   
+                        <input id ="CompCommer" name ="CompCommer" class="form-control input-lg" type="text"  >
+                    </div>
+                    <div class="col-sm-3">
+                        <label id="wrongCompCommer" style="color:red;">*</label>
+                    </div>
+                </div>
+
+
+                <br /><br /><br />
+
+                <div class="col-sm-12">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-3">
+                        <label for="CompOtherN">Άλλη Επωνυμία:</label>
+                    </div>
+                    <div class="col-sm-3">   
+                        <input id ="CompOtherN" name ="CompOtherN" class="form-control input-lg" type="text"  >
+                    </div>
+                    <div class="col-sm-3">
+                        <label id="wrongCompOtherN" style="color:red;">*</label>
+                    </div>
+                </div>
+
+                <br /><br /><br />
+
+                <div class="col-sm-12">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-3">
                         <label for="CompLF">Νομική Μορφή:</label>
                     </div>
                     <div class="col-sm-3">   
@@ -264,6 +295,21 @@
                     </div>
                     <div class="col-sm-3">
                         <label id="wrongCompLF" style="color:red;">*</label>
+                    </div>
+                </div>
+            
+                 <br /><br /><br />
+
+                <div class="col-sm-12">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-3">
+                        <label for="CompCEO">Όνομα Διευθυντή:</label>
+                    </div>
+                    <div class="col-sm-3">   
+                        <input id ="CompCEO" name ="CompCEO" class="form-control input-lg" type="text"  >
+                    </div>
+                    <div class="col-sm-3">
+                        <label id="wrongCompCEO" style="color:red;">*</label>
                     </div>
                 </div>
 
@@ -336,7 +382,7 @@
                         <label for="CompCountry">Χώρα:</label>
                     </div>
                     <div class="col-sm-3">
-                            <select class="form-control" id="CompCountry">
+                            <select class="form-control" id="CompCountry" form="user-register">
                                 <option value="">--Choose your Country--</option>
                                 <option value="AF">Afghanistan</option>
                                 <option value="AX">Εland Islands</option>
