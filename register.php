@@ -15,7 +15,9 @@
 	    <script type="text/javascript" src="js/bootstrap.min.js"></script>
 	    <script type="text/javascript" src="js/scripts.js"></script>
     <!---------------------------------------------------------------->
-     
+   
+      
+
   </head>
   
   <body> 
@@ -59,46 +61,62 @@
             <span id="Step1">
                 <br />
                 <div class="col-sm-12">
-                    <div class="col-sm-3"></div>
+                    <div class="col-sm-2"></div>
                     <div class="col-sm-2">
                         <label for="userName"> Όνομα Χρήστη:</label>
                     </div>
                     <div class="col-sm-3">
-                        <input  name="userName" id ="userName" class="form-control input-lg" type="text"  >
+                        <input  name="userName" id ="userName" onblur="checkUsername();" class="form-control input-lg" type="text"  >
                     </div>
-                    <div class="col-sm-3">
-                         <label id="wronguserName" style="color:red;">*</label>
+                    <div class="col-sm-5">
+                        <div class="alert alert-danger" id="wrongUsername" role="alert" style="display:none;">
+                          <span class="glyphicon glyphicon-exclamation-sign"  aria-hidden="true"></span>
+                          <span class="sr-only">Error:</span>
+                            Wrong
+                        </div>
                     </div>
                 </div>
 
                 </BR></BR></BR>
 
                 <div class="col-sm-12">
-                    <div class="col-sm-3"></div>
+                    <div class="col-sm-2"></div>
                     <div class="col-sm-2">
                         <label for="pass"> Κωδικός:</label>
                     </div>
                     <div class="col-sm-3">
-                        <input   id ="pass" name ="pass"  class="form-control input-lg"  type="password"  >
+                        <input   id ="pass" name ="pass"  onblur="checkPass();" class="form-control input-lg"  type="password"  >
                     </div>
-                    <div class="col-sm-3">
-                       <label id="wrongpass" style="color:red;">*</label>
+                    <div class="col-sm-5">
+                       <div class="alert alert-danger" id="wrongPass" role="alert" style="display:none;">
+                          <span class="glyphicon glyphicon-exclamation-sign"  aria-hidden="true"></span>
+                          <span class="sr-only">Error:</span>
+                            Wrong
+                        </div>
                    </div>
                 </div>
 
                 </BR></BR></BR>
 
                 <div class="col-sm-12">
-                    <div class="col-sm-3"></div>
+                    <div class="col-sm-2"></div>
                     <div class="col-sm-2">
                         <label for="passConf"> Eπαλήθευση κωδικού:</label>
                     </div>
                     <div class="col-sm-3">
-                        <input id ="passConf" maxlength="20" class="form-control input-lg" type="password"  >
+                        <input id ="passConf" name ="passConf" onblur="checkPassMatch();" maxlength="20" class="form-control input-lg" type="password"  >
                     </div>
-                    <div class="col-sm-3">	
-                         <label id="wrongpassConf" style="color:red;">*</label>
-                    </div>
+                    <div class="col-sm-5">
+                       <div class="alert alert-danger" id="wrongPassM" role="alert" style="display:none;">
+                          <span class="glyphicon glyphicon-exclamation-sign"  aria-hidden="true"></span>
+                          <span class="sr-only">Error:</span>
+                            Wrong
+                        </div>
+                        <div class="alert alert-success" id="rightPassM" role="alert" style="display:none;">
+                            <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                            Success
+                        </div>
+                   </div>
                 </div>
 
                 
@@ -120,6 +138,7 @@
                     </div>
                     <div class="col-sm-3">
                         <label id="wrongcomName" style="color:red;">*</label>
+                        
                     </div>
                 </div>
 
@@ -382,7 +401,7 @@
                         <label for="CompCountry">Χώρα:</label>
                     </div>
                     <div class="col-sm-3">
-                            <select class="form-control" id="CompCountry" form="user-register">
+                            <select class="form-control" id="CompCountry" name="CompCountry" form="user-register">
                                 <option value="">--Choose your Country--</option>
                                 <option value="AF">Afghanistan</option>
                                 <option value="AX">Εland Islands</option>

@@ -79,7 +79,7 @@
         
         $sql = "INSERT INTO ComPerson (Name, Surname, Address, Telephone, Fax, Email, PostCode, City) VALUES ('$comName',  '$comSName','$comAddress', '$comTel' ,'$comFax', '$comEmail' , '$comPC','$comPoli' );";
         
-       $sql2 = "INSERT INTO Company (Company_Name, Lequl_State, Address, PostCode, City, Telephone, Fax, Email, info, Person, Commersial_Name, Other_Name, CEO, Country) VALUES ('$CompName',  '$CompLF', '$CompAddres' ,'$CompPC', '$CompCity' , '$CompTel','$CompFax', '$CompEmail', '$description','$comTel', '$CompCommer', '$CompOtherN', '$CompCEO', '$CompCEO');";
+       $sql2 = "INSERT INTO Company (Company_Name, Lequl_State, Address, PostCode, City, Telephone, Fax, Email, info, Person, Commersial_Name, Other_Name, CEO, Country) VALUES ('$CompName',  '$CompLF', '$CompAddres' ,'$CompPC', '$CompCity' , '$CompTel','$CompFax', '$CompEmail', '$description','$comTel', '$CompCommer', '$CompOtherN', '$CompCEO', '$CompCountry');";
         
         $sql3 = "INSERT INTO Users (Username, Password, Company) VALUES ('$userName','$pass','$CompName');";
         
