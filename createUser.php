@@ -1,21 +1,18 @@
-<html>
-    <head></head>
-    
-    <body>
 <?php 
 
+    $servername = "localhost";
     $db = 'epl363';
     $username = 'root';
     $password = '';
 
     // Create connection
-    $conn = new mysqli('localhost', $username, $password, $db);
+    $conn = new mysqli($servername, $username, $password, $db);
+
 
     // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     } 
-    echo "Connected successfully";
 
     $userName="";
     $pass="";
@@ -75,7 +72,7 @@
         $CompCEO=$_POST["CompCEO"];
         $CompCountry=$_POST["CompCountry"];
     
-        echo $CompCountry;
+       
         
         $sql = "INSERT INTO ComPerson (Name, Surname, Address, Telephone, Fax, Email, PostCode, City) VALUES ('$comName',  '$comSName','$comAddress', '$comTel' ,'$comFax', '$comEmail' , '$comPC','$comPoli' );";
         
@@ -85,7 +82,7 @@
         
 
         if ($conn->query($sql) === TRUE and $conn->query($sql2) === TRUE and $conn->query($sql3) === TRUE) {
-            echo "New record created successfully ";
+            
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
             echo "Error: " . $sql2 . "<br>" . $conn->error;
@@ -93,8 +90,9 @@
         }
 
         $conn->close();     
+        
+        header( "location: profile5.php?user=$userName");
     }
 
 ?>
-        </body>
-    </html>
+    

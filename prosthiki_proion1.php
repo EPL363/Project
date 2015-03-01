@@ -50,7 +50,7 @@
 					    <div class="tab-pane" id="tab2"><?php include 'promitheftriaEteriaForm.php';?></div>
 						<div class="tab-pane" id="tab3"><?php include 'stixiaProiontosForm.php';?></div>
 						<div class="tab-pane" id="tab4"><?php include 'stixiaChimikonOusion.php';?></div>
-						<div class="tab-pane" id="tab5"><?php include 'prosthikiDDA.php';?></div>
+						<div class="tab-pane" id="tab5"></div>
 				    </div> 
                     
                     <div class="col-md-12">
