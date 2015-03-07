@@ -57,7 +57,7 @@
             </div >
           </div>
 
-          <form id="user-register" action="createUser.php" method="post">
+          <form id="user-register" action="getParaskevastikiEteriaData.php" method="post">
 
             <span id="Step1">
                 <br />

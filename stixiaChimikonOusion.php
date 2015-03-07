@@ -171,6 +171,14 @@
                 </div>
               </div>
             </div>
+            
+            <div class="col-md-4 column"  style="text-align: left">
+        	   <input id="ButtonPrevious" class="btn btn-default" type="button" value="Previous" name="Step3" onclick="handleWizardPrevious()" />
+		    </div>
+            <div class="col-sm-4"></div>
+		    <div class="col-md-4 column" style="text-align: right">
+                <input id="ButtonNext" class="btn btn-default" type="button" value="Next" name="Step5" onClick="handleWizardNext()" />
+		    </div>
       </div>
        
     

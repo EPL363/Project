@@ -35,6 +35,7 @@
     <div class="col-md-12 ">
         <div class="container">
         	<div class="row">
+                <form>
        	        <div class="panel-heading " >
                     <h2 class="panel-title col-sm-offset-1"><strong>Στοιχεία Χιμικού  Προιόντος</strong></h2>
                 </div>  
@@ -123,6 +124,15 @@
                         <input type="number" class="form-control" name="chemicalProduct-V" id="chemicalProduct-V"/>
                     </div>
                 </div>
+            
+                <div class="col-md-4 column"  style="text-align: left">
+                   <input id="ButtonPrevious" class="btn btn-default" type="button" value="Previous"  name="Step2" onclick="handleWizardPrevious()" />
+                </div>
+                <div class="col-sm-4"></div>
+                <div class="col-md-4 column" style="text-align: right">
+                    <input id="ButtonNext" class="btn btn-default" type="button" value="Next" name="Step4" onClick="handleWizardNext()" />
+                </div>
+            </form>
                  
             </div>  
         </div>

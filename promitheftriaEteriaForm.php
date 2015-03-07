@@ -19,7 +19,7 @@
     <script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
-
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script>
         var intTextBox=0;
         var choiceCount=0;
@@ -52,6 +52,70 @@
             choiceCount = choiceCount-1;
             //intTextBox = intTextBox-1;
         }
+        
+        
+        $(document).ready(function() {
+            $("#ButtonNext").click(function() { 
+
+                var proceed = true;
+                //simple validation at client's end
+                //loop through each field and we simply change border color to red for invalid fields		
+                $("#paraskevastiki_form input[required=true]").each(function(){
+
+                    $(this).css('border-color',''); 
+                    if(!$.trim($(this).val())){ //if this field is empty 
+                        $(this).css('border-color','red'); //change border color to red   
+                        proceed = false; //set do not proceed flag
+                    }
+                    //check invalid email
+                });
+
+                if(proceed) //everything looks good! proceed...
+                {
+                    //get input field values data to be sent to server
+
+                    post_data = {
+
+                        'suplCompany_Name': $('input[name=suplCompany-Name]').val(),
+                        'suplCompany_CommercialName' : $('input[name=suplCompany-CommercialName]').val(),
+                        'suplCompany_OtherName' : $('input[name=suplCompany-OtherName]').val(),    
+                        'suplCompany_legalForm': $('input[name=suplCompany-legalForm]').val(),
+                        'suplCompany_CEO' : $('input[name=suplCompany-CEO]').val(),
+                        'suplCompany_Address' : $('input[name=suplCompany-Address]').val(),
+                        'suplCompany_PC': $('input[name=suplCompany-PC]').val(),
+                        'suplCompany_City': $('input[name=suplCompany-City]').val(),
+                        'suplCompany_Tel': $('input[name=suplCompany-Phone]').val(),
+                        'suplCompany_Fax': $('input[name=suplCompany-fax]').val(),
+                        'suplCompany_Email': $('input[name=suplCompany-email]').val(),
+                        'suplCompany_Info': $('input[name=suplCompany-info]').val(),
+
+                        'suplEmpl_Name': $('input[name=suplEmpl-name]').val(),
+                        'suplEmpl_Surname': $('input[name=suplEmpl-Surname]').val(),
+                        'suplEmpl_Address': $('input[name=suplEmpl-address]').val(),
+                        'suplEmpl_PC': $('input[name=suplEmpl-pc]').val(),
+                        'suplEmpl_City': $('input[name=suplEmpl-city]').val(),
+                        'suplEmpl_Tel': $('input[name=suplEmpl-phone]').val(),
+                        'suplEmpl_Fax': $('input[name=suplEmpl-fax]').val(),
+                        'suplEmpl_Email': $('input[name=suplEmpl-email]').val()
+
+                    };
+
+                    //Ajax post data to server
+
+                    $.post('getParaskevastikiEteriaData.php', post_data, function(response){
+
+                        if(response.type == 'error'){ //load json data from server and output message     
+                            output = '<div class="error">'+response.text+'</div>';
+                        }else{
+                            output = '<div class="success">'+response.text+'</div>'
+                        }
+                        $("#paraskevastiki_form #Resultmessage").hide().html(output).slideDown();
+                    }, 'json');
+                }
+
+
+            });
+        });
     </script>
     
      <script src="jquery-1.9.1.js"></script>
@@ -100,6 +164,8 @@
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#suplCompanyModal">Προσθήκη Εταιρίας</button>
 
             <!-- Modal -->
+            
+            <form id="promitheftria-form" method="post">
             <div class="modal fade bs-example-modal-lg" id="suplCompanyModal" tabindex="-1" role="dialog" aria-labelledby="suplCompanyModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -128,7 +194,7 @@
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label" for="suplCompany-CommercialName">Εμπορική Επωνυμία Επιχείρησης:</label>
                                             <div class="col-sm-4">
-                                                <input class="form-control" id="suplCompany-CommercialName" name="constCompany-CommercialName"type="text">
+                                                <input class="form-control" id="suplCompany-CommercialName" name="suplCompany-CommercialName"type="text">
                                             </div>
                                         </div>
 
@@ -137,7 +203,7 @@
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label" for="suplCompany-OtherName">Άλλη Επωνυμία:</label>
                                             <div class="col-sm-4">
-                                                <input class="form-control" id="suplCompany-OtherName" name="constCompany-OtherName" type="text">
+                                                <input class="form-control" id="suplCompany-OtherName" name="suplCompany-OtherName" type="text">
                                             </div>
                                         </div>
 
@@ -233,72 +299,72 @@
                                         
                                         <br>
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label" for="constEmpl-name">Όνομα:</label>
+                                            <label class="col-sm-3 control-label" for="suplEmpl-name">Όνομα:</label>
                                             <div class="col-sm-4">
-                                                <input class="form-control" id="constEmpl-name" type="text">
+                                                <input class="form-control" id="suplEmpl-name" type="text">
                                             </div>
                                         </div>
 
                                         <br><br>
 
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label" for="constEmpl-Surname">Επίθετο:</label>
+                                            <label class="col-sm-3 control-label" for="suplEmpl-Surname">Επίθετο:</label>
                                             <div class="col-sm-4">
-                                                <input class="form-control" id="constEmpl-Surname" type="text">
+                                                <input class="form-control" id="suplEmpl-Surname" type="text">
                                             </div>
                                         </div>
 
                                         <br><br>
 
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label" for="constEmpl-address">Διεύθυνση:</label>
+                                            <label class="col-sm-3 control-label" for="suplEmpl-address">Διεύθυνση:</label>
                                             <div class="col-sm-4">
-                                                <input class="form-control" id="constEmpl-address" type="text">
+                                                <input class="form-control" id="suplEmpl-address" type="text">
                                             </div>
                                         </div>
 
                                         <br><br>
 
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label" for="constEmpl-pc">T.K. :</label>
+                                            <label class="col-sm-3 control-label" for="suplEmpl-pc">T.K. :</label>
                                             <div class="col-sm-2">
-                                                <input class="form-control" id="constEmpl-pc" type="number">
+                                                <input class="form-control" id="suplEmpl-pc" type="number">
                                             </div>
                                         </div>
 
                                         <br><br>
 
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label" for="constEmpl-city">Πόλη:</label>
+                                            <label class="col-sm-3 control-label" for="suplEmpl-city">Πόλη:</label>
                                             <div class="col-sm-4">
-                                                <input class="form-control" id="constEmpl-city" type="text">
+                                                <input class="form-control" id="suplEmpl-city" type="text">
                                             </div>
                                         </div>
 
                                         <br><br>
 
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label" for="constEmpl-phone">Τηλέφωνο:</label>
+                                            <label class="col-sm-3 control-label" for="suplEmpl-phone">Τηλέφωνο:</label>
                                             <div class="col-sm-4">
-                                                <input class="form-control" id="constEmpl-phone" type="number">
+                                                <input class="form-control" id="suplEmpl-phone" type="number">
                                             </div>
                                         </div>
 
                                         <br><br>
 
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label" for="constEmpl-fax">Φάξ:</label>
+                                            <label class="col-sm-3 control-label" for="suplEmpl-fax">Φάξ:</label>
                                             <div class="col-sm-4">
-                                                <input class="form-control" id="constEmpl-fax" type="number">
+                                                <input class="form-control" id="suplEmpl-fax" type="number">
                                             </div>
                                         </div>
 
                                         <br><br>
 
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label" for="constEmpl-email">Ηλεκτρονικό Ταχυδρομείο:</label>
+                                            <label class="col-sm-3 control-label" for="suplEmpl-email">Ηλεκτρονικό Ταχυδρομείο:</label>
                                             <div class="col-sm-4">
-                                                <input class="form-control" id="constEmpl-email" type="email">
+                                                <input class="form-control" id="suplEmpl-email" type="email">
                                             </div>
                                         </div>
 
@@ -316,8 +382,16 @@
                 </div>
               </div>
             </div>
+                </form>
          
         <!--------------------------------------------------------------->
+            <div class="col-md-4 column"  style="text-align: left">
+        	   <input id="ButtonPrevious" class="btn btn-default" type="button" value="Previous" name="Step1" onclick="handleWizardPrevious()" />
+		    </div>
+            <div class="col-sm-4"></div>
+		    <div class="col-md-4 column" style="text-align: right">
+                <input id="ButtonNext" class="btn btn-default" type="button" value="Next" name="Step3" onClick="handleWizardNext()" />
+		    </div>
         </div>
  
     </div> 
