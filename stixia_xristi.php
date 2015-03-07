@@ -58,7 +58,7 @@
                 mysql_select_db("root", $con);
                 mysql_query ("set character_set_results='utf8'");
                 
-                $result=mysql_query("SELECT U.* FROM Users  U WHERE U.Username='$user'" , $con);
+                $result=mysql_query("SELECT U.* FROM Users  U WHERE U.Username='".$user."'" , $con);
                 $row = mysql_fetch_array($result);
                
                 while ($row){
@@ -67,10 +67,9 @@
                     $row = mysql_fetch_array($result);
                 }
                 
-                $result=mysql_query("SELECT C.* FROM Company C WHERE C.Company_Name='$company'" , $con);
+                $result=mysql_query("SELECT C.* FROM Company C WHERE C.Company_Name=N'".$company."'" , $con);
                 $row = mysql_fetch_array($result);
                 while ($row){
-                    echo "aaa";
                     $ls=$row['Lequl_State'];
                     $user_tel=$row['Person'];
                     $company_email=$row['Email'];
@@ -83,7 +82,7 @@
                     $row = mysql_fetch_array($result);
                 }
                 
-                $result=mysql_query("SELECT P.* FROM ComPerson P WHERE P.Telephone='$user_tel'" , $con);
+                $result=mysql_query("SELECT P.* FROM ComPerson P WHERE P.Telephone=N'".$user_tel."'" , $con);
                 $row = mysql_fetch_array($result);
                 while ($row){
                     $user_name=$row['Name'];
@@ -93,7 +92,6 @@
                     $user_city =$row['City'];
                     $user_pc=$row['PostCode'];
                     $user_fax=$row['Fax'];
-                    echo $user_name;
                     $row = mysql_fetch_array($result);
                 }
             }
