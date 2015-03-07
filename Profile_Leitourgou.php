@@ -10,6 +10,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         
         <!-- Include *at least* the core style and default theme -->
       

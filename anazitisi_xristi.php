@@ -5,6 +5,7 @@
         <title>Προφίλ Χρήστη</title>
         
         <meta name="description" content="">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="author" content="">
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 

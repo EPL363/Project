@@ -1,7 +1,7 @@
 <?php 
 
     $servername = "localhost";
-    $db = 'epl363';
+    $db = 'teedb';
     $username = 'root';
     $password = '';
 
@@ -42,8 +42,6 @@
 
 
 
-
-
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         $userName=$_POST["userName"];
@@ -58,7 +56,7 @@
         $comTel=$_POST["comTel"];
         $comFax=$_POST["comFax"];
         
-        $CompName=$_POST["CompName"];
+        $CompName =$_POST["CompName"];
         $CompLF=$_POST["CompLF"];
         $CompEmail=$_POST["CompEmail"];
         $CompAddres=$_POST["CompAddres"];
@@ -74,11 +72,11 @@
     
        
         
-        $sql = "INSERT INTO ComPerson (Name, Surname, Address, Telephone, Fax, Email, PostCode, City) VALUES ('$comName',  '$comSName','$comAddress', '$comTel' ,'$comFax', '$comEmail' , '$comPC','$comPoli' );";
+        $sql = "INSERT INTO ComPerson (Name, Surname, Address, Telephone, Fax, Email, PostCode, City) VALUES (N'$comName',  N'$comSName',N'$comAddress', '$comTel' ,'$comFax', '$comEmail' , '$comPC',N'$comPoli' );";
         
-       $sql2 = "INSERT INTO Company (Company_Name, Lequl_State, Address, PostCode, City, Telephone, Fax, Email, info, Person, Commersial_Name, Other_Name, CEO, Country) VALUES ('$CompName',  '$CompLF', '$CompAddres' ,'$CompPC', '$CompCity' , '$CompTel','$CompFax', '$CompEmail', '$description','$comTel', '$CompCommer', '$CompOtherN', '$CompCEO', '$CompCountry');";
+       $sql2 = "INSERT INTO Company (Company_Name, Lequl_State, Address, PostCode, City, Telephone, Fax, Email, info, Person, Commersial_Name, Other_Name, CEO, Country) VALUES (N'$CompName',  '$CompLF', N'$CompAddres' ,'$CompPC', N'$CompCity' , '$CompTel','$CompFax', '$CompEmail', N'$description','$comTel', N'$CompCommer', N'$CompOtherN',N'$CompCEO', N'$CompCountry');";
         
-        $sql3 = "INSERT INTO Users (Username, Password, Company) VALUES ('$userName','$pass','$CompName');";
+        $sql3 = "INSERT INTO Users (Username, Password, Company) VALUES (N'$userName',N'$pass',N'$CompName');";
         
 
         if ($conn->query($sql) === TRUE and $conn->query($sql2) === TRUE and $conn->query($sql3) === TRUE) {
