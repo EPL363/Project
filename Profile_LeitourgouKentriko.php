@@ -7,7 +7,7 @@
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <meta name="description" content="">
           <meta name="author" content="">
-          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
             <!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
             <!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
             <!--script src="js/less-1.3.3.min.js"></script-->
@@ -27,13 +27,7 @@
 	       <script type="text/javascript" src="js/bootstrap.min.js"></script>
 	       <script type="text/javascript" src="js/scripts.js"></script>
             
-        <script src="jquery-1.9.1.js"></script>
-            <script> 
-                $(function(){
-                    $("#profile").load("Profile_Leitourgou.html"); 
-                });
-                
-            </script> 
+        
 
     </head>
     
@@ -42,34 +36,34 @@
     
         <div class="container">
 
-           <div class="row clearfix"><div class="col-md-12 column"><img src="banner_gr_Laa.png" width="100%" height="98"></div></div>
-                       
-              
-           
-           
-
-
-            
-                <div class="col-md-10 column">
-                    
-                   <div role="tabpanel">
-
-                      <!-- Nav tabs -->
+           <div class="row clearfix">
+               <div class="col-md-12 column">
+                   <img src="banner_gr_Laa.png" width="100%" height="98">
+               </div>
+            </div>
+            <div class="col-md-12 column">
+                <div class="col-md-12 column">
+                    <div role="tabpanel"><!-- Nav tabs -->
                       <ul class="nav nav-tabs" role="tablist">
-                          <li role="presentation"><a href="#prosthiki" aria-controls="prosthiki" role="tab" data-toggle="tab"><h4 style="text-align:center; color: #2CA4B0; font-family: 'Helvetica Neue', sans-serif;  font-weight: 100; letter-spacing: 1px; padding: 0 0 5px;" >Αναζήτηση</h4></a></li>
-                        
-                      </ul>
-
-                      <!-- Tab panes -->
-                      <div class="tab-content" style="height:100%">
-                         <div role="tabpanel" class="tab-pane active" id="profile"></div>
-                        
-
+                          <li role="presentation">
+                              <a href="#prosthiki" aria-controls="prosthiki" role="tab" data-toggle="tab">
+                                  <h4 style="text-align:center; color: #2CA4B0; font-family: 'Helvetica Neue', sans-serif;  font-weight: 100; letter-spacing: 1px; padding: 0 0 5px;" >Αναζήτηση</h4>
+                              </a>
+                          </li>
+                        </ul><!-- Tab panes -->
+                        <div class="tab-content" style="height:100%">
+                            <div role="tabpanel" class="tab-pane active" id="profile">
+                                <?php include 'Profile_Leitourgou2/new/Profile_Leitourgou.php';?>
+                            </div>
+                        </div>
                     </div>
                 </div>
-           
-        </div>
-             <div class="col-md-2 column" style="text-align: right"><h3></h3><button type="button" class="btn btn-link" onclick="location.href='logIn.html'">Log Out</button></div>
-        </div>
+                 <div class="col-md-12 column" style="text-align: right">
+                    <button type="button" class="btn btn-link" onclick="location.href='logIn.html'">
+                        Log Out
+                    </button>
+                </div>
+            </div>  
+         </div>
     </body>
 </html>
