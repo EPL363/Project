@@ -89,7 +89,17 @@
 
         $conn->close();     
         
-        header( "location: profile5.php?user=$userName");
+
+        // Start the session
+        session_start();
+
+
+
+            // Set session variables
+            $_SESSION["username"] = $userName;
+ 
+
+        header( "location: profile5.php");
     }
 
 ?>

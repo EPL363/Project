@@ -1,44 +1,58 @@
 <?php
-if($_POST){
-    ini_set('default_charset','utf-8');
+    if (is_ajax()) {
 
-	//check if its an ajax request, exit if not
-    if(!isset($_SERVER['HTTP_X_REQUESTED_WITH']) AND strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') {
-		
-		$output = json_encode(array( //create JSON data
-			'type'=>'error', 
-			'text' => 'Sorry Request must be Ajax POST'
-		));
-		die($output); //exit script outputting json data
-    } 
-	
-	//Sanitize input data using PHP filter_var().
-    
-    $constCompany_Name= filter_var($_POST["constCompany_Name"], FILTER_SANITIZE_STRING);
-    $constCompany_CommercialName= filter_var($_POST["constCompany_CommercialName"], FILTER_SANITIZE_STRING);
-    $constCompany_OtherName= filter_var($_POST["constCompany_OtherName"], FILTER_SANITIZE_STRING);    
-    $constCompany_legalForm= filter_var($_POST["constCompany_legalForm"], FILTER_SANITIZE_STRING);
-    $constCompany_CEO= filter_var($_POST["constCompany_CEO"], FILTER_SANITIZE_STRING);
-    $constCompany_Address= filter_var($_POST["constCompany_Address"]);
-    $constCompany_PC= filter_var($_POST["constCompany_PC"]);
-    $constCompany_City= filter_var($_POST["constCompany_City"], FILTER_SANITIZE_STRING);
-    $constCompany_Country= filter_var($_POST["constCompany_Country"], FILTER_SANITIZE_STRING);
-    $constCompany_Tel= filter_var($_POST["constCompany_Tel"]);
-    $constCompany_Fax= filter_var($_POST["constCompany_Fax"]);
-    $constCompany_Email= filter_var($_POST["constCompany_Email"], FILTER_VALIDATE_EMAIL);
-    $constCompany_Info= filter_var($_POST["constCompany_Info"]);
 
-    $constEmpl_Name= filter_var($_POST["constEmpl_Name"], FILTER_SANITIZE_STRING);
-    $constEmpl_Surname= filter_var($_POST["constEmpl_Surname"], FILTER_SANITIZE_STRING);
-    $constEmpl_Address= filter_var($_POST["constEmpl_Address"]);
-    $constEmpl_PC= filter_var($_POST["constEmpl_PC"]);
-    $constEmpl_City= filter_var($_POST["constEmpl_City"], FILTER_SANITIZE_STRING);
-    $constEmpl_Tel= filter_var($_POST["constEmpl_Tel"]);
-    $constEmpl_Fax= filter_var($_POST["constEmpl_Fax"]);    
-    $constEmpl_Email= filter_var($_POST["constEmpl_Email"],FILTER_VALIDATE_EMAIL);    
 
-	
-	
-}
 
+//        $array = "";
+//        $returndata = "";
+//        $strArray = explode("&", $_POST);
+//        $i = 0;
+//        foreach ($strArray as $str)
+//        {
+//            $array = explode("=", $str);
+//            $returndata[$i] = $array[0];
+//            $i = $i + 1;
+//            $returndata[$i] = $array[1];
+//            $i = $i + 1;
+//        }
+//        print_r($returndata);
+session_start();
+                    $_SESSION["constCompany_Name"]= $_POST["constCompany_Name"];
+
+
+                    $return = $_POST;
+
+                    echo json_encode($return);
+
+//                    $_SESSION["constCompany_Name"]= $return["constCompany_Name"];
+//                    $_SESSION["constCompany_CommercialName"]= $return["constCompany_CommercialName"];
+//                    $_SESSION["constCompany_OtherName"]= $return["constCompany_OtherName"];
+//                    $_SESSION["constCompany_legalForm"]= $return["constCompany_legalForm"];
+//                    $_SESSION["constCompany_CEO"]= $array["constCompany_CEO"];
+//                    $_SESSION["constCompany_Address"]= $array["constCompany_Address"];
+//                    $_SESSION["constCompany_PC"]= $array["constCompany_PC"];
+//                    $_SESSION["constCompany_City"]= $array["constCompany_City"];
+//                    $_SESSION["constCompany_Country"]= $array["constCompany_Country"];
+//                    $_SESSION["constCompany_Tel"]= $array["constCompany_Phone"];
+//                    $_SESSION["constCompany_Fax"]= $array["constCompany_fax"];
+//                    $_SESSION["constCompany_Email"]= $array["constCompany_email"];
+//                    $_SESSION["constCompany_Info"]= filter_var($array["constCompany_info"]);
+//
+//                    $_SESSION["constEmpl_Name"]= $array["constEmpl_name"];
+//                    $_SESSION["constEmpl_Surname"]= $array["constEmpl_Surname"];
+//                    $_SESSION["constEmpl_Address"]= $array["constEmpl_address"];
+//                    $_SESSION["constEmpl_PC"]= $array["constEmpl_pc"];
+//                    $_SESSION["constEmpl_City"]= $array["constEmpl_city"];
+//                    $_SESSION["constEmpl_Tel"]= $array["constEmpl_phone"];
+//                    $_SESSION["constEmpl_Fax"]= $array["constEmpl_fax"];
+//                    $_SESSION["constEmpl_Email"]= $array["constEmpl_email"];
+
+
+    }
+
+    //Function to check if the request is an AJAX request
+    function is_ajax() {
+        return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
+    }
 ?>

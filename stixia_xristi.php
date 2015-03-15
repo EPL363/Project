@@ -25,7 +25,7 @@
      
           <?php 
 
-            $user=$_GET["user"];
+            $user=$_SESSION["username"];
             $user_pass="";
 
             $company="";
@@ -35,7 +35,7 @@
             $company_city="";
             $company_pc="";
             $company_tel="";
-            $compnay_fax="";
+            $company_fax="";
             $company_info="";
 
             $user_name="";

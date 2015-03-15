@@ -29,14 +29,18 @@
             if (choiceCount < 10 && intTextBox < 20) {
                 intTextBox = intTextBox + 1;
                 choiceCount = choiceCount+1;
+                PostDataPromitheftiki();
                 var contentID = document.getElementById('entrycol');
                 var newTr = document.createElement('tr');
-                var name = $('#suplCompany-Name').val();
+                var name = $('#suplCompany_Name').val();
                 newTr.setAttribute('id','entry'+intTextBox);
                 newTr.innerHTML ='<td><strong>'+intTextBox+'</strong></td><td>'+name+'</td><td><input type="image" src="Deep_Edit.png" data-toggle="modal" data-target="#suplCompanyModal"></td><td><input type="image" src="delete-icon.png" onclick= "removeCompanyID('+intTextBox+');"></td>';
 
                 contentID.appendChild(newTr);
-                
+
+                $('body').on('hidden.bs.modal', '.modal', function () {
+                    $(this).removeData('bs.modal');
+                });
                     
             } else {
                 alert("Φτάσατε το μέγιστο όριο εισαγωγής στοιχείων προμηθευτών");
@@ -54,68 +58,66 @@
         }
         
         
-        $(document).ready(function() {
-            $("#ButtonNext").click(function() { 
+        function PostDataPromitheftiki() {
+            // 1. Create xhrProm instance - Start
+            var xhrProm;
+            if (window.XMLHttpRequest) {
+                xhrProm = new XMLHttpRequest();
+            }
+            else if (window.ActiveXObject) {
+                xhrProm = new ActiveXObject("Msxml2.XMLHTTP");
+            }
+            else {
+                throw new Error("Ajax is not supported by this browser");
+            }
+            // 1. Create xhrProm instance - End
 
-                var proceed = true;
-                //simple validation at client's end
-                //loop through each field and we simply change border color to red for invalid fields		
-                $("#paraskevastiki_form input[required=true]").each(function(){
-
-                    $(this).css('border-color',''); 
-                    if(!$.trim($(this).val())){ //if this field is empty 
-                        $(this).css('border-color','red'); //change border color to red   
-                        proceed = false; //set do not proceed flag
+            // 2. Define what to do when xhrProm feed you the response from the server - Start
+            xhrProm.onreadystatechange = function () {
+                if (xhrProm.readyState === 4) {
+                    if (xhrProm.status == 200 && xhrProm.status < 300) {
+                        document.getElementById('asdf1').innerHTML = xhrProm.responseText;
+                        console.log("okSupl");
                     }
-                    //check invalid email
-                });
-
-                if(proceed) //everything looks good! proceed...
-                {
-                    //get input field values data to be sent to server
-
-                    post_data = {
-
-                        'suplCompany_Name': $('input[name=suplCompany-Name]').val(),
-                        'suplCompany_CommercialName' : $('input[name=suplCompany-CommercialName]').val(),
-                        'suplCompany_OtherName' : $('input[name=suplCompany-OtherName]').val(),    
-                        'suplCompany_legalForm': $('input[name=suplCompany-legalForm]').val(),
-                        'suplCompany_CEO' : $('input[name=suplCompany-CEO]').val(),
-                        'suplCompany_Address' : $('input[name=suplCompany-Address]').val(),
-                        'suplCompany_PC': $('input[name=suplCompany-PC]').val(),
-                        'suplCompany_City': $('input[name=suplCompany-City]').val(),
-                        'suplCompany_Tel': $('input[name=suplCompany-Phone]').val(),
-                        'suplCompany_Fax': $('input[name=suplCompany-fax]').val(),
-                        'suplCompany_Email': $('input[name=suplCompany-email]').val(),
-                        'suplCompany_Info': $('input[name=suplCompany-info]').val(),
-
-                        'suplEmpl_Name': $('input[name=suplEmpl-name]').val(),
-                        'suplEmpl_Surname': $('input[name=suplEmpl-Surname]').val(),
-                        'suplEmpl_Address': $('input[name=suplEmpl-address]').val(),
-                        'suplEmpl_PC': $('input[name=suplEmpl-pc]').val(),
-                        'suplEmpl_City': $('input[name=suplEmpl-city]').val(),
-                        'suplEmpl_Tel': $('input[name=suplEmpl-phone]').val(),
-                        'suplEmpl_Fax': $('input[name=suplEmpl-fax]').val(),
-                        'suplEmpl_Email': $('input[name=suplEmpl-email]').val()
-
-                    };
-
-                    //Ajax post data to server
-
-                    $.post('getParaskevastikiEteriaData.php', post_data, function(response){
-
-                        if(response.type == 'error'){ //load json data from server and output message     
-                            output = '<div class="error">'+response.text+'</div>';
-                        }else{
-                            output = '<div class="success">'+response.text+'</div>'
-                        }
-                        $("#paraskevastiki_form #Resultmessage").hide().html(output).slideDown();
-                    }, 'json');
                 }
+            }
+            // 2. Define what to do when xhrProm feed you the response from the server - Start
+            var countSuplCompany = intTextBox;
+            var suplCompany_Name = document.getElementById("suplCompany_Name").value;
+            var suplCompany_CommercialName = document.getElementById("suplCompany_CommercialName").value;
+            var suplCompany_OtherName = document.getElementById("suplCompany_OtherName").value;
+            var suplCompany_legalForm = document.getElementById("suplCompany_legalForm").value;
+            var suplCompany_CEO = document.getElementById("suplCompany_CEO").value;
+            var suplCompany_Address = document.getElementById("suplCompany_Address").value;
+            var suplCompany_PC = document.getElementById("suplCompany_PC").value;
+            var suplCompany_City = document.getElementById("suplCompany_City").value;
+            var suplCompany_Phone = document.getElementById("suplCompany_Phone").value;
+            var suplCompany_fax = document.getElementById("suplCompany_fax").value;
+            var suplCompany_email = document.getElementById("suplCompany_email").value;
+            var suplCompany_info = document.getElementById("suplCompany_info").value;
+            var suplEmpl_name = document.getElementById("suplEmpl_name").value;
+            var suplEmpl_Surname = document.getElementById("suplEmpl_Surname").value;
+            var suplEmpl_address = document.getElementById("suplEmpl_address").value;
+            var suplEmpl_pc = document.getElementById("suplEmpl_pc").value;
+            var suplEmpl_pc = document.getElementById("suplEmpl_city").value;
+            var suplEmpl_phone = document.getElementById("suplEmpl_phone").value;
+            var suplEmpl_fax = document.getElementById("suplEmpl_fax").value;
+            var suplEmpl_email = document.getElementById("suplEmpl_email").value;
 
 
-            });
-        });
+
+            console.log(suplCompany_CommercialName);
+            // 3. Specify your action, location and Send to the server - Start
+            xhrProm.open('POST', 'getPromitheftriaEteriaData.php');
+            xhrProm.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhrProm.send("countSuplCompany="+countSuplCompany+"&suplCompany_Name=" + suplCompany_Name +"&suplCompany_CommercialName="+suplCompany_CommercialName+"&suplCompany_OtherName="
+            +suplCompany_OtherName+"&suplCompany_legalForm="+suplCompany_legalForm+"&suplCompany_CEO="+suplCompany_CEO+"&suplCompany_Address="+suplCompany_Address
+            +"&suplCompany_PC="+suplCompany_PC+"&suplCompany_City="+suplCompany_City+"&suplCompany_Phone="+suplCompany_Phone+
+            "&suplCompany_fax="+suplCompany_fax+"&suplCompany_email="+suplCompany_email+"&suplCompany_info="+suplCompany_info+"&suplEmpl_name="+suplEmpl_name
+            +"&suplEmpl_Surname="+suplEmpl_Surname+"&suplEmpl_address="+suplEmpl_address+"&suplEmpl_pc="+suplEmpl_pc+"&suplEmpl_pc="+suplEmpl_pc+"&suplEmpl_phone="+suplEmpl_phone+
+            "&suplEmpl_fax="+suplEmpl_fax+"&suplEmpl_email="+suplEmpl_email);
+        }
+
     </script>
     
      <script src="jquery-1.9.1.js"></script>
@@ -165,7 +167,7 @@
 
             <!-- Modal -->
             
-            <form id="promitheftria-form" method="post">
+            <form id="promitheftria-form">
             <div class="modal fade bs-example-modal-lg" id="suplCompanyModal" tabindex="-1" role="dialog" aria-labelledby="suplCompanyModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -183,108 +185,108 @@
                                         
                                         <br>
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label" for="suplCompany-Name">Επωνυμία Επιχείρησης:</label>
+                                            <label class="col-sm-3 control-label" for="suplCompany_Name">Επωνυμία Επιχείρησης:</label>
                                             <div class="col-sm-4">
-                                                <input class="form-control" id="suplCompany-Name" type="text">
+                                                <input class="form-control" required=true id="suplCompany_Name" name="suplCompany_Name"type="text">
                                             </div>
                                         </div>
 
                                         <br><br>
                                         
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label" for="suplCompany-CommercialName">Εμπορική Επωνυμία Επιχείρησης:</label>
+                                            <label class="col-sm-3 control-label" for="suplCompany_CommercialName">Εμπορική Επωνυμία Επιχείρησης:</label>
                                             <div class="col-sm-4">
-                                                <input class="form-control" id="suplCompany-CommercialName" name="suplCompany-CommercialName"type="text">
+                                                <input class="form-control" id="suplCompany_CommercialName" name="suplCompany_CommercialName"type="text">
                                             </div>
                                         </div>
 
                                         <br><br>
 
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label" for="suplCompany-OtherName">Άλλη Επωνυμία:</label>
+                                            <label class="col-sm-3 control-label" for="suplCompany_OtherName">Άλλη Επωνυμία:</label>
                                             <div class="col-sm-4">
-                                                <input class="form-control" id="suplCompany-OtherName" name="suplCompany-OtherName" type="text">
+                                                <input class="form-control" id="suplCompany_OtherName" name="suplCompany_OtherName" type="text">
                                             </div>
                                         </div>
 
                                         <br><br>
 
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label" for="suplCompany-legalForm">Νομική Μορφή:</label>
+                                            <label class="col-sm-3 control-label" for="suplCompany_legalForm">Νομική Μορφή:</label>
                                             <div class="col-sm-4">
-                                                <input class="form-control" id="suplCompany-legalForm" type="text">
+                                                <input class="form-control" required=true id="suplCompany_legalForm" name="suplCompany_legalForm" type="text">
                                             </div>
                                         </div>
 
                                         <br><br>
 
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label" for="suplCompany-CEO">Όνομα Διευθυντή:</label>
+                                            <label class="col-sm-3 control-label" for="suplCompany_CEO">Όνομα Διευθυντή:</label>
                                             <div class="col-sm-4 ">
-                                                <input class="form-control" id="suplCompany-CEO" type="text">
+                                                <input class="form-control"  id="suplCompany_CEO" name="suplCompany_CEO" type="text">
                                             </div>
                                         </div>
 
                                         <br><br>
 
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label" for="suplCompany-Address">Διεύθυνση:</label>
+                                            <label class="col-sm-3 control-label" for="suplCompany_Address">Διεύθυνση:</label>
                                             <div class="col-sm-4">
-                                                <input class="form-control" id="suplCompany-Address" type="text">
+                                                <input class="form-control" id="suplCompany_Address" name="suplCompany_Address" type="text">
                                             </div>
                                         </div>
 
                                         <br><br>
 
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label" for="suplCompany-PC">T.K. :</label>
+                                            <label class="col-sm-3 control-label" for="suplCompany_PC">T.K. :</label>
                                             <div class="col-sm-2">
-                                                <input class="form-control" id="suplCompany-PC" type="number">
+                                                <input class="form-control" id="suplCompany_PC" name="suplCompany_PC" type="number">
                                             </div>
                                         </div>
 
                                         <br><br>
 
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label" for="suplCompany-City">Πόλη:</label>
+                                            <label class="col-sm-3 control-label" for="suplCompany_City">Πόλη:</label>
                                             <div class="col-sm-4">
-                                                <input class="form-control" id="suplCompany-City" type="text">
+                                                <input class="form-control" id="suplCompany_City" name="suplCompany_City" type="text">
                                             </div>
                                         </div>
 
                                         <br><br>
 
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label" for="suplCompany-Phone">Τηλέφωνο:</label>
+                                            <label class="col-sm-3 control-label" for="suplCompany_Phone">Τηλέφωνο:</label>
                                             <div class="col-sm-4">
-                                                <input class="form-control" id="suplCompany-Phone" type="number">
+                                                <input class="form-control" id="suplCompany_Phone" name="suplCompany_Phone" type="number">
                                             </div>
                                         </div>
 
                                         <br><br>
 
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label" for="suplCompany-fax">Φάξ:</label>
+                                            <label class="col-sm-3 control-label" for="suplCompany_fax">Φάξ:</label>
                                             <div class="col-sm-4">
-                                                <input class="form-control" id="suplCompany-fax" type="number">
+                                                <input class="form-control" id="suplCompany_fax" name="suplCompany_fax" type="number">
                                             </div>
                                         </div>
 
                                         <br><br>
 
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label" for="suplCompany-email">Ηλεκτρονικό Ταχυδρομείο:</label>
+                                            <label class="col-sm-3 control-label" for="suplCompany_email">Ηλεκτρονικό Ταχυδρομείο:</label>
                                             <div class="col-sm-4">
-                                                <input class="form-control" id="suplCompany-email" type="email">
+                                                <input class="form-control" id="suplCompany_email" name="suplCompany_email" type="email">
                                             </div>
                                         </div>
 
                                         <br><br>
 
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label" for="suplCompany-info">Άλλες Πληροφορίες:</label>
+                                            <label class="col-sm-3 control-label" for="suplCompany_info">Άλλες Πληροφορίες:</label>
                                             <div class="col-sm-4">
-                                                <textarea class="form-control" rows="5" id="suplCompany-info"></textarea>
+                                                <textarea class="form-control" rows="5" id="suplCompany_info" name="suplCompany_info"></textarea>
                                             </div>
                                         </div>
 
@@ -299,72 +301,72 @@
                                         
                                         <br>
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label" for="suplEmpl-name">Όνομα:</label>
+                                            <label class="col-sm-3 control-label" for="suplEmpl_name">Όνομα:</label>
                                             <div class="col-sm-4">
-                                                <input class="form-control" id="suplEmpl-name" type="text">
+                                                <input class="form-control" required=true id="suplEmpl_name" name="suplEmpl_name"  type="text">
                                             </div>
                                         </div>
 
                                         <br><br>
 
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label" for="suplEmpl-Surname">Επίθετο:</label>
+                                            <label class="col-sm-3 control-label" for="suplEmpl_Surname">Επίθετο:</label>
                                             <div class="col-sm-4">
-                                                <input class="form-control" id="suplEmpl-Surname" type="text">
+                                                <input class="form-control" required=true id="suplEmpl_Surname" name="suplEmpl_Surname" type="text">
                                             </div>
                                         </div>
 
                                         <br><br>
 
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label" for="suplEmpl-address">Διεύθυνση:</label>
+                                            <label class="col-sm-3 control-label" for="suplEmpl_address">Διεύθυνση:</label>
                                             <div class="col-sm-4">
-                                                <input class="form-control" id="suplEmpl-address" type="text">
+                                                <input class="form-control" id="suplEmpl_address" name="suplEmpl_address" type="text">
                                             </div>
                                         </div>
 
                                         <br><br>
 
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label" for="suplEmpl-pc">T.K. :</label>
+                                            <label class="col-sm-3 control-label" for="suplEmpl_pc">T.K. :</label>
                                             <div class="col-sm-2">
-                                                <input class="form-control" id="suplEmpl-pc" type="number">
+                                                <input class="form-control" id="suplEmpl_pc" name="suplEmpl_pc" type="number">
                                             </div>
                                         </div>
 
                                         <br><br>
 
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label" for="suplEmpl-city">Πόλη:</label>
+                                            <label class="col-sm-3 control-label" for="suplEmpl_city">Πόλη:</label>
                                             <div class="col-sm-4">
-                                                <input class="form-control" id="suplEmpl-city" type="text">
+                                                <input class="form-control" id="suplEmpl_city" name="suplEmpl_city" type="text">
                                             </div>
                                         </div>
 
                                         <br><br>
 
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label" for="suplEmpl-phone">Τηλέφωνο:</label>
+                                            <label class="col-sm-3 control-label" for="suplEmpl_phone">Τηλέφωνο:</label>
                                             <div class="col-sm-4">
-                                                <input class="form-control" id="suplEmpl-phone" type="number">
+                                                <input class="form-control" required=true id="suplEmpl_phone" name="suplEmpl_phone" type="number">
                                             </div>
                                         </div>
 
                                         <br><br>
 
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label" for="suplEmpl-fax">Φάξ:</label>
+                                            <label class="col-sm-3 control-label" for="suplEmpl_fax">Φάξ:</label>
                                             <div class="col-sm-4">
-                                                <input class="form-control" id="suplEmpl-fax" type="number">
+                                                <input class="form-control" id="suplEmpl_fax" name="suplEmpl_fax" type="number">
                                             </div>
                                         </div>
 
                                         <br><br>
 
                                         <div class="form-group">
-                                            <label class="col-sm-3 control-label" for="suplEmpl-email">Ηλεκτρονικό Ταχυδρομείο:</label>
+                                            <label class="col-sm-3 control-label" for="suplEmpl_email">Ηλεκτρονικό Ταχυδρομείο:</label>
                                             <div class="col-sm-4">
-                                                <input class="form-control" id="suplEmpl-email" type="email">
+                                                <input class="form-control" required=true id="suplEmpl_email" name="suplEmpl_email" type="email">
                                             </div>
                                         </div>
 
@@ -377,21 +379,30 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="addCompany();" name="addentry">Save changes</button>
+                    <button type="button" id="save_supplier_company" class="btn btn-primary" data-dismiss="modal" onclick="addCompany();" name="addentry">Save changes</button>
                   </div>
                 </div>
               </div>
             </div>
                 </form>
+            
+            </div>
+           
          
         <!--------------------------------------------------------------->
+        <br><br>
+        <div class="row">
             <div class="col-md-4 column"  style="text-align: left">
-        	   <input id="ButtonPrevious" class="btn btn-default" type="button" value="Previous" name="Step1" onclick="handleWizardPrevious()" />
+        	   <input id="ButtonPrevious" class="btn btn-default" type="button" value="Previous" name="Step1" onclick="handleWizardPreviousStep2to1()" />
 		    </div>
             <div class="col-sm-4"></div>
 		    <div class="col-md-4 column" style="text-align: right">
-                <input id="ButtonNext" class="btn btn-default" type="button" value="Next" name="Step3" onClick="handleWizardNext()" />
+                <input id="ButtonNext2" class="btn btn-default" type="button" value="Next" name="Step3" onClick="handleWizardNextStep2To3()" />
 		    </div>
+             <?php
+                print_r($_SESSION);
+            ?>
+        
         </div>
  
     </div> 
