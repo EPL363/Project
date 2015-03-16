@@ -13,5 +13,5 @@ foreach ( $_POST as $key=>$value ){
 
 }
 
-print_r($_SESSION);
+    print_r($_SESSION);
 ?>

@@ -61,7 +61,7 @@
                     </div>
                 </div>
             </div>
-            <div id="asdf"></div><div id="asdf1"></div><div id="asdf2"></div>
+            <div id="asdf"></div>
             <?php print_r($_SESSION);?>
         </div>
     </body>

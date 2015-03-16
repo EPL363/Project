@@ -48,7 +48,7 @@
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === 4) {
                         if (xhr.status == 200 && xhr.status < 300) {
-                            document.getElementById('asdf2').innerHTML = xhr.responseText;
+                            document.getElementById('asdf').innerHTML = xhr.responseText;
                             console.log("ok");
                             document.getElementById('Step1').style.display = 'none';
                             document.getElementById('Step3').style.display = 'none';

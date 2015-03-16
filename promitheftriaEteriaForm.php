@@ -47,17 +47,6 @@
             }
         }
 
-        //FUNCTION TO REMOVE Company TEXT BOX 
-
-        function removeCompanyID(cnum){
-            var contentID = document.getElementById('entrycol');
-            contentID.removeChild(document.getElementById('entry'+cnum));
-            //intTextBox = intTextBox-1; this would break it
-            choiceCount = choiceCount-1;
-            //intTextBox = intTextBox-1;
-        }
-        
-        
         function PostDataPromitheftiki() {
             // 1. Create xhrProm instance - Start
             var xhrProm;
@@ -76,7 +65,7 @@
             xhrProm.onreadystatechange = function () {
                 if (xhrProm.readyState === 4) {
                     if (xhrProm.status == 200 && xhrProm.status < 300) {
-                        document.getElementById('asdf1').innerHTML = xhrProm.responseText;
+                        document.getElementById('asdf').innerHTML = xhrProm.responseText;
                         console.log("okSupl");
                     }
                 }
@@ -99,7 +88,7 @@
             var suplEmpl_Surname = document.getElementById("suplEmpl_Surname").value;
             var suplEmpl_address = document.getElementById("suplEmpl_address").value;
             var suplEmpl_pc = document.getElementById("suplEmpl_pc").value;
-            var suplEmpl_pc = document.getElementById("suplEmpl_city").value;
+            var suplEmpl_city = document.getElementById("suplEmpl_city").value;
             var suplEmpl_phone = document.getElementById("suplEmpl_phone").value;
             var suplEmpl_fax = document.getElementById("suplEmpl_fax").value;
             var suplEmpl_email = document.getElementById("suplEmpl_email").value;
@@ -117,6 +106,55 @@
             +"&suplEmpl_Surname="+suplEmpl_Surname+"&suplEmpl_address="+suplEmpl_address+"&suplEmpl_pc="+suplEmpl_pc+"&suplEmpl_pc="+suplEmpl_pc+"&suplEmpl_phone="+suplEmpl_phone+
             "&suplEmpl_fax="+suplEmpl_fax+"&suplEmpl_email="+suplEmpl_email);
         }
+
+
+        function DeleteDataPromitheftiki(count) {
+            // 1. Create xhrProm instance - Start
+            var xhrProm;
+            if (window.XMLHttpRequest) {
+                xhrProm = new XMLHttpRequest();
+            }
+            else if (window.ActiveXObject) {
+                xhrProm = new ActiveXObject("Msxml2.XMLHTTP");
+            }
+            else {
+                throw new Error("Ajax is not supported by this browser");
+            }
+            // 1. Create xhrProm instance - End
+
+            // 2. Define what to do when xhrProm feed you the response from the server - Start
+            xhrProm.onreadystatechange = function () {
+                if (xhrProm.readyState === 4) {
+                    if (xhrProm.status == 200 && xhrProm.status < 300) {
+                        document.getElementById('asdf').innerHTML = xhrProm.responseText;
+                        console.log("okDeleteSupl");
+                    }
+                }
+            }
+            // 2. Define what to do when xhrProm feed you the response from the server - Start
+
+            console.log(suplCompany_CommercialName);
+            // 3. Specify your action, location and Send to the server - Start
+            xhrProm.open('POST', 'deletePromitheftriaEteriaData.php');
+            xhrProm.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhrProm.send("count="+count);
+        }
+
+
+
+
+        function removeCompanyID(cnum){
+            DeleteDataPromitheftiki(cnum);
+            var contentID = document.getElementById('entrycol');
+            contentID.removeChild(document.getElementById('entry'+cnum));
+            //intTextBox = intTextBox-1; this would break it
+            choiceCount = choiceCount-1;
+            //intTextBox = intTextBox-1;
+        }
+
+
+
+
 
     </script>
     

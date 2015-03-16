@@ -50,19 +50,6 @@
                     }
                 }
 
-
-                //FUNCTION TO REMOVE TEXT BOX ELEMENT
-
-                function removeElementID(cnum)
-                {
-                    var contentID = document.getElementById('chemicalTable');
-                    contentID.removeChild(document.getElementById('chemicaltexts'+cnum));
-                    contentID.removeChild(document.getElementById('newline'+cnum));
-                    //intTextBox = intTextBox-1; this would break it
-                    choiceCount = choiceCount-1;
-                }
-
-
                 function PostDataXimikonOusion() {
                     // 1. Create xhrProm instance - Start
                     var xhrProm;
@@ -81,7 +68,7 @@
                     xhrProm.onreadystatechange = function () {
                         if (xhrProm.readyState === 4) {
                             if (xhrProm.status == 200 && xhrProm.status < 300) {
-                                document.getElementById('asdf1').innerHTML = xhrProm.responseText;
+                                document.getElementById('asdf').innerHTML = xhrProm.responseText;
                                 console.log("okSupl");
                             }
                         }
@@ -106,6 +93,52 @@
                     +chemical_IUPAC+"&chemical_otherName="+chemical_otherName+"&chemical_weight="+chemical_weight+"&chemical_CLP="+chemical_CLP
                     +"&chemical_enarmonismeni="+chemical_enarmonismeni);
                 }
+
+
+                function removeElementID(cnum) {
+                    DeleteDataOusias(cnum);
+                    var contentID = document.getElementById('chemicalTable');
+                    contentID.removeChild(document.getElementById('chemicaltexts'+cnum));
+                    contentID.removeChild(document.getElementById('newline'+cnum));
+                    //intTextBox = intTextBox-1; this would break it
+                    choiceCount = choiceCount-1;
+                }
+
+                function DeleteDataOusias(count) {
+                    // 1. Create xhrProm instance - Start
+                    var xhrProm;
+                    if (window.XMLHttpRequest) {
+                        xhrProm = new XMLHttpRequest();
+                    }
+                    else if (window.ActiveXObject) {
+                        xhrProm = new ActiveXObject("Msxml2.XMLHTTP");
+                    }
+                    else {
+                        throw new Error("Ajax is not supported by this browser");
+                    }
+                    // 1. Create xhrProm instance - End
+
+                    // 2. Define what to do when xhrProm feed you the response from the server - Start
+                    xhrProm.onreadystatechange = function () {
+                        if (xhrProm.readyState === 4) {
+                            if (xhrProm.status == 200 && xhrProm.status < 300) {
+                                document.getElementById('asdf').innerHTML = xhrProm.responseText;
+                                console.log("okDeleteSupl");
+                            }
+                        }
+                    }
+                    // 2. Define what to do when xhrProm feed you the response from the server - Start
+
+                    console.log(suplCompany_CommercialName);
+                    // 3. Specify your action, location and Send to the server - Start
+                    xhrProm.open('POST', 'deleteChimikiOusiaData.php');
+                    xhrProm.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                    xhrProm.send("count="+count);
+                }
+
+
+
+
             </script>
 
     </head>
