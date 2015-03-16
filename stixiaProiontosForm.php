@@ -75,7 +75,7 @@
                 var chemicalProduct_storageAdd = document.getElementById("chemicalProduct_storageAdd").value;
                 var chemicalProduct_SDS = document.getElementById("chemicalProduct_SDS").value;
                 var chemicalProduct_CPL = document.getElementById("chemicalProduct_CPL").value;
-                var chemicalProduct_V = document.getElementById("chemicalProduct_CommName").value;
+                var chemicalProduct_V = document.getElementById("chemicalProduct_V").value;
 
                 console.log(constCompany_CommercialName);
                 // 3. Specify your action, location and Send to the server - Start

@@ -45,6 +45,14 @@
                         newTBDiv.setAttribute('id','chemicaltexts'+intTextBox);
                         newTBDiv.innerHTML ='<td><strong>'+intTextBox+'</strong></td><td>'+labelName+'</td><td><input type="image" src="Deep_Edit.png" data-toggle="modal" data-target="#chemicalModal"></td><td><input type="image" src="delete-icon.png" onclick= "removeElementID('+intTextBox+');"></td>'; 
                         contentID.appendChild(newTBDiv);
+                        document.getElementById("chemical_Name").value = "";
+                        document.getElementById("chemical_CAS").value = "";
+                        document.getElementById("chemical_EINECS").value ="";
+                        document.getElementById("chemical_IUPAC").value = "";
+                        document.getElementById("chemical_otherName").value = "";
+                        document.getElementById("chemical_weight").value = "";
+                        document.getElementById("chemical_CLP").value = "";
+                        document.getElementById("chemical_enarmonismeni").value = 0;
                     } else {
                         alert("Φτάσατε το μέγιστο όριο χημικών ουσιών που μπορείτε να προσθέσετε");
                     }
@@ -136,7 +144,16 @@
                     xhrProm.send("count="+count);
                 }
 
-
+                function clearInputsChimikon(){
+                    document.getElementById("chemical_Name").value = "";
+                    document.getElementById("chemical_CAS").value = "";
+                    document.getElementById("chemical_EINECS").value ="";
+                    document.getElementById("chemical_IUPAC").value = "";
+                    document.getElementById("chemical_otherName").value = "";
+                    document.getElementById("chemical_weight").value = "";
+                    document.getElementById("chemical_CLP").value = "";
+                    document.getElementById("chemical_enarmonismeni").value = 0;
+                }
 
 
             </script>
@@ -244,7 +261,7 @@
                       <!-------------------------------------------------------------------------------------------------------------------->
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="clearInputsChimikon()">Close</button>
                     <button type="button"  class="btn btn-primary" data-dismiss="modal" onclick="addElement();" name="addentry">Save changes</button>
                   </div>
                 </div>

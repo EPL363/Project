@@ -92,7 +92,7 @@
             var constEmpl_Surname = document.getElementById("constEmpl_Surname").value;
             var constEmpl_address = document.getElementById("constEmpl_address").value;
             var constEmpl_pc = document.getElementById("constEmpl_pc").value;
-            var constEmpl_pc = document.getElementById("constEmpl_city").value;
+            var constEmpl_city = document.getElementById("constEmpl_city").value;
             var constEmpl_phone = document.getElementById("constEmpl_phone").value;
             var constEmpl_fax = document.getElementById("constEmpl_fax").value;
             var constEmpl_email = document.getElementById("constEmpl_email").value;
@@ -107,7 +107,7 @@
                 +constCompany_OtherName+"&constCompany_legalForm="+constCompany_legalForm+"&constCompany_CEO="+constCompany_CEO+"&constCompany_Address="+constCompany_Address
                 +"&constCompany_PC="+constCompany_PC+"&constCompany_City="+constCompany_City+"&constCompany_country="+constCompany_country+"&constCompany_Phone="+constCompany_Phone+
                 "&constCompany_fax="+constCompany_fax+"&constCompany_email="+constCompany_email+"&constCompany_info="+constCompany_info+"&constEmpl_name="+constEmpl_name
-                +"&constEmpl_Surname="+constEmpl_Surname+"&constEmpl_address="+constEmpl_address+"&constEmpl_pc="+constEmpl_pc+"&constEmpl_pc="+constEmpl_pc+"&constEmpl_phone="+constEmpl_phone+
+                +"&constEmpl_Surname="+constEmpl_Surname+"&constEmpl_address="+constEmpl_address+"&constEmpl_pc="+constEmpl_pc+"&constEmpl_city="+constEmpl_city+"&constEmpl_phone="+constEmpl_phone+
                 "&constEmpl_fax="+constEmpl_fax+"&constEmpl_email="+constEmpl_email);
         }
 

@@ -38,9 +38,26 @@
 
                 contentID.appendChild(newTr);
 
-                $('body').on('hidden.bs.modal', '.modal', function () {
-                    $(this).removeData('bs.modal');
-                });
+                document.getElementById("suplCompany_Name").value = "";
+                document.getElementById("suplCompany_CommercialName").value= "";
+                document.getElementById("suplCompany_OtherName").value = "";
+                document.getElementById("suplCompany_legalForm").value= "";
+                document.getElementById("suplCompany_CEO").value= "";
+                document.getElementById("suplCompany_Address").value= "";
+                document.getElementById("suplCompany_PC").value= "";
+                document.getElementById("suplCompany_City").value= "";
+                document.getElementById("suplCompany_Phone").value= "";
+                document.getElementById("suplCompany_fax").value= "";
+                document.getElementById("suplCompany_email").value= "";
+                document.getElementById("suplCompany_info").value= "";
+                document.getElementById("suplEmpl_name").value= "";
+                document.getElementById("suplEmpl_Surname").value= "";
+                document.getElementById("suplEmpl_address").value= "";
+                document.getElementById("suplEmpl_pc").value= "";
+                document.getElementById("suplEmpl_city").value= "";
+                document.getElementById("suplEmpl_phone").value= "";
+                document.getElementById("suplEmpl_fax").value= "";
+                document.getElementById("suplEmpl_email").value= "";
                     
             } else {
                 alert("Φτάσατε το μέγιστο όριο εισαγωγής στοιχείων προμηθευτών");
@@ -93,8 +110,6 @@
             var suplEmpl_fax = document.getElementById("suplEmpl_fax").value;
             var suplEmpl_email = document.getElementById("suplEmpl_email").value;
 
-
-
             console.log(suplCompany_CommercialName);
             // 3. Specify your action, location and Send to the server - Start
             xhrProm.open('POST', 'getPromitheftriaEteriaData.php');
@@ -103,7 +118,7 @@
             +suplCompany_OtherName+"&suplCompany_legalForm="+suplCompany_legalForm+"&suplCompany_CEO="+suplCompany_CEO+"&suplCompany_Address="+suplCompany_Address
             +"&suplCompany_PC="+suplCompany_PC+"&suplCompany_City="+suplCompany_City+"&suplCompany_Phone="+suplCompany_Phone+
             "&suplCompany_fax="+suplCompany_fax+"&suplCompany_email="+suplCompany_email+"&suplCompany_info="+suplCompany_info+"&suplEmpl_name="+suplEmpl_name
-            +"&suplEmpl_Surname="+suplEmpl_Surname+"&suplEmpl_address="+suplEmpl_address+"&suplEmpl_pc="+suplEmpl_pc+"&suplEmpl_pc="+suplEmpl_pc+"&suplEmpl_phone="+suplEmpl_phone+
+            +"&suplEmpl_Surname="+suplEmpl_Surname+"&suplEmpl_address="+suplEmpl_address+"&suplEmpl_pc="+suplEmpl_pc+"&suplEmpl_city="+suplEmpl_city+"&suplEmpl_phone="+suplEmpl_phone+
             "&suplEmpl_fax="+suplEmpl_fax+"&suplEmpl_email="+suplEmpl_email);
         }
 
@@ -152,9 +167,28 @@
             //intTextBox = intTextBox-1;
         }
 
-
-
-
+        function clearInputsEterias(){
+            document.getElementById("suplCompany_Name").value = "";
+            document.getElementById("suplCompany_CommercialName").value= "";
+            document.getElementById("suplCompany_OtherName").value = "";
+            document.getElementById("suplCompany_legalForm").value= "";
+            document.getElementById("suplCompany_CEO").value= "";
+            document.getElementById("suplCompany_Address").value= "";
+            document.getElementById("suplCompany_PC").value= "";
+            document.getElementById("suplCompany_City").value= "";
+            document.getElementById("suplCompany_Phone").value= "";
+            document.getElementById("suplCompany_fax").value= "";
+            document.getElementById("suplCompany_email").value= "";
+            document.getElementById("suplCompany_info").value= "";
+            document.getElementById("suplEmpl_name").value= "";
+            document.getElementById("suplEmpl_Surname").value= "";
+            document.getElementById("suplEmpl_address").value= "";
+            document.getElementById("suplEmpl_pc").value= "";
+            document.getElementById("suplEmpl_city").value= "";
+            document.getElementById("suplEmpl_phone").value= "";
+            document.getElementById("suplEmpl_fax").value= "";
+            document.getElementById("suplEmpl_email").value= "";
+        }
 
     </script>
     
@@ -416,7 +450,7 @@
                       <!-------------------------------------------------------------------------------------------------------------------->
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="clearInputsEterias()">Close</button>
                     <button type="button" id="save_supplier_company" class="btn btn-primary" data-dismiss="modal" onclick="addCompany();" name="addentry">Save changes</button>
                   </div>
                 </div>
