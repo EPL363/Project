@@ -38,28 +38,124 @@
                     if (choiceCount < 100 && intTextBox < 200) {
                         intTextBox = intTextBox + 1;
                         choiceCount = choiceCount+1;
+                        PostDataXimikonOusion();
                         var contentID = document.getElementById('chemicalTable');
                         var newTBDiv = document.createElement('tr');
-                        var labelName = $('#chemical-Name').val();
+                        var labelName = $('#chemical_Name').val();
                         newTBDiv.setAttribute('id','chemicaltexts'+intTextBox);
                         newTBDiv.innerHTML ='<td><strong>'+intTextBox+'</strong></td><td>'+labelName+'</td><td><input type="image" src="Deep_Edit.png" data-toggle="modal" data-target="#chemicalModal"></td><td><input type="image" src="delete-icon.png" onclick= "removeElementID('+intTextBox+');"></td>'; 
                         contentID.appendChild(newTBDiv);
+                        document.getElementById("chemical_Name").value = "";
+                        document.getElementById("chemical_CAS").value = "";
+                        document.getElementById("chemical_EINECS").value ="";
+                        document.getElementById("chemical_IUPAC").value = "";
+                        document.getElementById("chemical_otherName").value = "";
+                        document.getElementById("chemical_weight").value = "";
+                        document.getElementById("chemical_CLP").value = "";
+                        document.getElementById("chemical_enarmonismeni").value = 0;
                     } else {
                         alert("Φτάσατε το μέγιστο όριο χημικών ουσιών που μπορείτε να προσθέσετε");
                     }
                 }
 
+                function PostDataXimikonOusion() {
+                    // 1. Create xhrProm instance - Start
+                    var xhrProm;
+                    if (window.XMLHttpRequest) {
+                        xhrProm = new XMLHttpRequest();
+                    }
+                    else if (window.ActiveXObject) {
+                        xhrProm = new ActiveXObject("Msxml2.XMLHTTP");
+                    }
+                    else {
+                        throw new Error("Ajax is not supported by this browser");
+                    }
+                    // 1. Create xhrProm instance - End
 
-                //FUNCTION TO REMOVE TEXT BOX ELEMENT
+                    // 2. Define what to do when xhrProm feed you the response from the server - Start
+                    xhrProm.onreadystatechange = function () {
+                        if (xhrProm.readyState === 4) {
+                            if (xhrProm.status == 200 && xhrProm.status < 300) {
+                                document.getElementById('asdf').innerHTML = xhrProm.responseText;
+                                console.log("okSupl");
+                            }
+                        }
+                    }
+                    // 2. Define what to do when xhrProm feed you the response from the server - Start
+                    var countChemical = intTextBox;
+                    var chemical_Name = document.getElementById("chemical_Name").value;
+                    var chemical_CAS = document.getElementById("chemical_CAS").value;
+                    var chemical_EINECS = document.getElementById("chemical_EINECS").value;
+                    var chemical_IUPAC = document.getElementById("chemical_IUPAC").value;
+                    var chemical_otherName = document.getElementById("chemical_otherName").value;
+                    var chemical_weight = document.getElementById("chemical_weight").value;
+                    var chemical_CLP = document.getElementById("chemical_CLP").value;
+                    var chemical_enarmonismeni = document.getElementById("chemical_enarmonismeni").value;
 
-                function removeElementID(cnum)
-                {
+
+                    console.log(suplCompany_CommercialName);
+                    // 3. Specify your action, location and Send to the server - Start
+                    xhrProm.open('POST', 'getChimikaData.php');
+                    xhrProm.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                    xhrProm.send("countChemical="+countChemical+"&chemical_Name="+chemical_Name+"&chemical_CAS=" + chemical_CAS +"&chemical_EINECS="+chemical_EINECS+"&chemical_IUPAC="
+                    +chemical_IUPAC+"&chemical_otherName="+chemical_otherName+"&chemical_weight="+chemical_weight+"&chemical_CLP="+chemical_CLP
+                    +"&chemical_enarmonismeni="+chemical_enarmonismeni);
+                }
+
+
+                function removeElementID(cnum) {
+                    DeleteDataOusias(cnum);
                     var contentID = document.getElementById('chemicalTable');
                     contentID.removeChild(document.getElementById('chemicaltexts'+cnum));
                     contentID.removeChild(document.getElementById('newline'+cnum));
                     //intTextBox = intTextBox-1; this would break it
                     choiceCount = choiceCount-1;
                 }
+
+                function DeleteDataOusias(count) {
+                    // 1. Create xhrProm instance - Start
+                    var xhrProm;
+                    if (window.XMLHttpRequest) {
+                        xhrProm = new XMLHttpRequest();
+                    }
+                    else if (window.ActiveXObject) {
+                        xhrProm = new ActiveXObject("Msxml2.XMLHTTP");
+                    }
+                    else {
+                        throw new Error("Ajax is not supported by this browser");
+                    }
+                    // 1. Create xhrProm instance - End
+
+                    // 2. Define what to do when xhrProm feed you the response from the server - Start
+                    xhrProm.onreadystatechange = function () {
+                        if (xhrProm.readyState === 4) {
+                            if (xhrProm.status == 200 && xhrProm.status < 300) {
+                                document.getElementById('asdf').innerHTML = xhrProm.responseText;
+                                console.log("okDeleteSupl");
+                            }
+                        }
+                    }
+                    // 2. Define what to do when xhrProm feed you the response from the server - Start
+
+                    console.log(suplCompany_CommercialName);
+                    // 3. Specify your action, location and Send to the server - Start
+                    xhrProm.open('POST', 'deleteChimikiOusiaData.php');
+                    xhrProm.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                    xhrProm.send("count="+count);
+                }
+
+                function clearInputsChimikon(){
+                    document.getElementById("chemical_Name").value = "";
+                    document.getElementById("chemical_CAS").value = "";
+                    document.getElementById("chemical_EINECS").value ="";
+                    document.getElementById("chemical_IUPAC").value = "";
+                    document.getElementById("chemical_otherName").value = "";
+                    document.getElementById("chemical_weight").value = "";
+                    document.getElementById("chemical_CLP").value = "";
+                    document.getElementById("chemical_enarmonismeni").value = 0;
+                }
+
+
             </script>
 
     </head>
@@ -100,59 +196,59 @@
                             <div class="col-md-9 column"> 
                                 <form class="form-horizontal" role="form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                                     <div class="form-group" >
-                                        <label class="control-label col-sm-3" for="chemical-Name">Χημική ουσία</label>
+                                        <label class="control-label col-sm-3" for="chemical_Name">Χημική ουσία</label>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" name="chemical-Name" id="chemical-Name" />
+                                            <input type="text" class="form-control" name="chemical_Name" id="chemical_Name" />
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-sm-3" for="chemical-CAS" >Αριθμός CAS</label>
+                                        <label class="control-label col-sm-3" for="chemical_CAS" >Αριθμός CAS</label>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control"  name="chemical-CAS" id="chemical-CAS" />
+                                            <input type="text" class="form-control"  name="chemical_CAS" id="chemical_CAS" />
                                             
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-sm-3" for="chemical-EINECS">Αριθμός EC/EINECS</label>
+                                        <label class="control-label col-sm-3" for="chemical_EINECS">Αριθμός EC/EINECS</label>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" name="chemical-EINECS" id="chemical-EINECS" />
+                                            <input type="text" class="form-control" name="chemical_EINECS" id="chemical_EINECS" />
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-sm-3" for="chemical-IUPAC">Ονοματολογία κατά IUPAC</label>
+                                        <label class="control-label col-sm-3" for="chemical_IUPAC">Ονοματολογία κατά IUPAC</label>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" name="chemical-IUPAC" id="chemical-IUPAC" />
+                                            <input type="text" class="form-control" name="chemical_IUPAC" id="chemical_IUPAC" />
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-sm-3" for="chemical-otherName">Άλλη Ονοματολογία</label>
+                                        <label class="control-label col-sm-3" for="chemical_otherName">Άλλη Ονοματολογία</label>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" name="chemical-otherName" id="chemical-otherName" />
+                                            <input type="text" class="form-control" name="chemical_otherName" id="chemical_otherName" />
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-sm-3" for="chemical-weight">Ακριβής συγκέντρωση χημικής ουσίας στο μείγμα                                                                  (βάρος κατά βάρος)</label>
+                                        <label class="control-label col-sm-3" for="chemical_weight">Ακριβής συγκέντρωση χημικής ουσίας στο μείγμα                                                                  (βάρος κατά βάρος)</label>
                                         <div class="col-sm-4">
-                                            <input type="number" class="form-control" name="chemical-weight" id="chemical-weight" />
+                                            <input type="number" class="form-control" name="chemical_weight" id="chemical_weight" />
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-sm-3" for="chemical-CLP">Ταξινόμηση και Επισήμανση σύμφωνα με τον Κανονισμό 1272/2008 (Κανονισμός CLP)</label>
+                                        <label class="control-label col-sm-3" for="chemical_CLP">Ταξινόμηση και Επισήμανση σύμφωνα με τον Κανονισμό 1272/2008 (Κανονισμός CLP)</label>
                                         <div class="col-sm-4">
-                                            <input type="text" class="form-control" name="chemical-CLP" id="chemical-CLP" />
+                                            <input type="text" class="form-control" name="chemical_CLP" id="chemical_CLP" />
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="control-label col-sm-3" for="chemical-enarmonismeni">Εναρμονισμένη ταξινόμηση</label>
+                                        <label class="control-label col-sm-3" for="chemical_enarmonismeni">Εναρμονισμένη ταξινόμηση</label>
                                         <div class="col-sm-4">
-                                            <select class="form-control" name="chemical-enarmonismeni" id="chemical-enarmonismeni">
+                                            <select class="form-control" name="chemical_enarmonismeni" id="chemical_enarmonismeni">
                                                 <option value="1">Ναι</option>
                                                 <option value="0">Όχι</option>
                                             </select>
@@ -165,20 +261,22 @@
                       <!-------------------------------------------------------------------------------------------------------------------->
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="clearInputsChimikon()">Close</button>
                     <button type="button"  class="btn btn-primary" data-dismiss="modal" onclick="addElement();" name="addentry">Save changes</button>
                   </div>
                 </div>
               </div>
             </div>
-            
-            <div class="col-md-4 column"  style="text-align: left">
-        	   <input id="ButtonPrevious" class="btn btn-default" type="button" value="Previous" name="Step3" onclick="handleWizardPrevious()" />
-		    </div>
-            <div class="col-sm-4"></div>
-		    <div class="col-md-4 column" style="text-align: right">
-                <input id="ButtonNext" class="btn btn-default" type="button" value="Next" name="Step5" onClick="handleWizardNext()" />
-		    </div>
+            <br><br>
+            <div class="row">
+                <div class="col-md-4 column"  style="text-align: left">
+                   <input id="ButtonPrevious" class="btn btn-default" type="button" value="Previous" name="Step3" onclick="handleWizardPreviousStep4to3()" />
+                </div>
+                <div class="col-sm-4"></div>
+                <div class="col-md-4 column" style="text-align: right">
+                    <input id="ButtonNext" class="btn btn-default" type="button" value="Next" name="Step5" onClick="handleWizardNextStep4To5()" />
+                </div>
+            </div>
       </div>
        
     

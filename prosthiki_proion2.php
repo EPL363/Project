@@ -21,6 +21,7 @@
         
        <script src="script_Prosthiki.js"></script>
        
+        
     </head>
 
     <body>
@@ -57,16 +58,9 @@
             
             <br><br>
             
-            <div class="col-md-4 column"  style="text-align: left">
-        	   <input id="ButtonPrevious" class="btn btn-default" type="button" value="Previous"  disabled="disabled" name="" onclick="handleWizardPrevious()" />
-		    </div>
-            <div class="col-sm-4"></div>
-		    <div class="col-md-4 column" style="text-align: right">
-                <input id="ButtonNext" class="btn btn-default" type="button" value="Next" name="Step2" onClick="handleWizardNext()" />
-		    </div>
     
-            
+
            
-	   </div>    
+	   </div>
     </body>
 </html>

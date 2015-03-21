@@ -16,11 +16,10 @@
     <link href="css/custom.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     
     <script src="jquery-1.9.1.js"></script>
@@ -36,81 +35,83 @@
         });
                           
     </script>
-    
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function() {
-        $("#ButtonNext").click(function() { 
 
-            var proceed = true;
-            //simple validation at client's end
-            //loop through each field and we simply change border color to red for invalid fields		
-            $("#paraskevastiki_form input[required=true]").each(function(){
+    <script>
 
-                $(this).css('border-color',''); 
-                if(!$.trim($(this).val())){ //if this field is empty 
-                    $(this).css('border-color','red'); //change border color to red   
-                    proceed = false; //set do not proceed flag
-                }
-                //check invalid email
-            });
-
-            if(proceed) //everything looks good! proceed...
-            {
-                //get input field values data to be sent to server
-
-                post_data = {
-                   
-                    'constCompany_Name': $('input[name=constCompany-Name]').val(),
-                    'constCompany_CommercialName' : $('input[name=constCompany-CommercialName]').val(),
-                    'constCompany_OtherName' : $('input[name=constCompany-OtherName]').val(),    
-                    'constCompany_legalForm': $('input[name=constCompany-legalForm]').val(),
-                    'constCompany_CEO' : $('input[name=constCompany-CEO]').val(),
-                    'constCompany_Address' : $('input[name=constCompany-Address]').val(),
-                    'constCompany_PC': $('input[name=constCompany-PC]').val(),
-                    'constCompany_City': $('input[name=constCompany-City]').val(),
-                    'constCompany_Country': $('input[name=constCompany-country]').val(),
-                    'constCompany_Tel': $('input[name=constCompany-Phone]').val(),
-                    'constCompany_Fax': $('input[name=constCompany-fax]').val(),
-                    'constCompany_Email': $('input[name=constCompany-email]').val(),
-                    'constCompany_Info': $('input[name=constCompany-info]').val(),
-
-                    'constEmpl_Name': $('input[name=constEmpl-name]').val(),
-                    'constEmpl_Surname': $('input[name=constEmpl-Surname]').val(),
-                    'constEmpl_Address': $('input[name=constEmpl-address]').val(),
-                    'constEmpl_PC': $('input[name=constEmpl-pc]').val(),
-                    'constEmpl_City': $('input[name=constEmpl-city]').val(),
-                    'constEmpl_Tel': $('input[name=constEmpl-phone]').val(),
-                    'constEmpl_Fax': $('input[name=constEmpl-fax]').val(),
-                    'constEmpl_Email': $('input[name=constEmpl-email]').val()
-
-                };
-
-                //Ajax post data to server
-
-                $.post('getParaskevastikiEteriaData.php', post_data, function(response){
-
-                    if(response.type == 'error'){ //load json data from server and output message     
-                        output = '<div class="error">'+response.text+'</div>';
-                    }else{
-                        output = '<div class="success">'+response.text+'</div>'
-                    }
-                    $("#paraskevastiki_form #Resultmessage").hide().html(output).slideDown();
-                }, 'json');
+        function PostDataPaeaskevastiki() {
+            // 1. Create XHR instance - Start
+            var xhr;
+            if (window.XMLHttpRequest) {
+                xhr = new XMLHttpRequest();
             }
-            
-            
-        });
+            else if (window.ActiveXObject) {
+                xhr = new ActiveXObject("Msxml2.XMLHTTP");
+            }
+            else {
+                throw new Error("Ajax is not supported by this browser");
+            }
+            // 1. Create XHR instance - End
 
-        //reset previously set border colors and hide all message on .keyup()
-//        $("#paraskevastiki_form  input[required=true]").keyup(function() { 
-//            $(this).css('border-color',''); 
-//            $("#result").slideUp();
-//
-//        });
-    });
+            // 2. Define what to do when XHR feed you the response from the server - Start
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status == 200 && xhr.status < 300) {
+                        document.getElementById('asdf').innerHTML = xhr.responseText;
+                        console.log("ok");
+                        document.getElementById('Step1').style.display = 'none';
+                        document.getElementById('Step3').style.display = 'none';
+                        document.getElementById('Step4').style.display = 'none';
+                        document.getElementById('Step5').style.display = 'none';
+                        document.getElementById('Step2').style.display = '';
+
+                        // Change background color on header to highlight new step
+                        document.getElementById('HeaderTableStep2').style.color= '#66CCFF';
+                        document.getElementById('HeaderTableStep1').style.color = '#9DA1A3';
+                        document.getElementById('HeaderTableStep3').style.color = '#000000';
+                        document.getElementById('HeaderTableStep4').style.color = '#000000';
+                        document.getElementById('HeaderTableStep5').style.color = '#000000';
+                    }
+                }
+            }
+            // 2. Define what to do when XHR feed you the response from the server - Start
+
+            var constCompany_Name = document.getElementById("constCompany_Name").value;
+            var constCompany_CommercialName = document.getElementById("constCompany_CommercialName").value;
+            var constCompany_OtherName = document.getElementById("constCompany_OtherName").value;
+            var constCompany_legalForm = document.getElementById("constCompany_legalForm").value;
+            var constCompany_CEO = document.getElementById("constCompany_CEO").value;
+            var constCompany_Address = document.getElementById("constCompany_Address").value;
+            var constCompany_PC = document.getElementById("constCompany_PC").value;
+            var constCompany_City = document.getElementById("constCompany_City").value;
+            var constCompany_country = document.getElementById("constCompany_country").value;
+            var constCompany_Phone = document.getElementById("constCompany_Phone").value;
+            var constCompany_fax = document.getElementById("constCompany_fax").value;
+            var constCompany_email = document.getElementById("constCompany_email").value;
+            var constCompany_info = document.getElementById("constCompany_info").value;
+            var constEmpl_name = document.getElementById("constEmpl_name").value;
+            var constEmpl_Surname = document.getElementById("constEmpl_Surname").value;
+            var constEmpl_address = document.getElementById("constEmpl_address").value;
+            var constEmpl_pc = document.getElementById("constEmpl_pc").value;
+            var constEmpl_city = document.getElementById("constEmpl_city").value;
+            var constEmpl_phone = document.getElementById("constEmpl_phone").value;
+            var constEmpl_fax = document.getElementById("constEmpl_fax").value;
+            var constEmpl_email = document.getElementById("constEmpl_email").value;
+
+
+
+            console.log(constCompany_CommercialName);
+            // 3. Specify your action, location and Send to the server - Start
+            xhr.open('POST', 'getParaskevastikiEteriaData11.php');
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.send("constCompany_Name=" + constCompany_Name +"&constCompany_CommercialName="+constCompany_CommercialName+"&constCompany_OtherName="
+                +constCompany_OtherName+"&constCompany_legalForm="+constCompany_legalForm+"&constCompany_CEO="+constCompany_CEO+"&constCompany_Address="+constCompany_Address
+                +"&constCompany_PC="+constCompany_PC+"&constCompany_City="+constCompany_City+"&constCompany_country="+constCompany_country+"&constCompany_Phone="+constCompany_Phone+
+                "&constCompany_fax="+constCompany_fax+"&constCompany_email="+constCompany_email+"&constCompany_info="+constCompany_info+"&constEmpl_name="+constEmpl_name
+                +"&constEmpl_Surname="+constEmpl_Surname+"&constEmpl_address="+constEmpl_address+"&constEmpl_pc="+constEmpl_pc+"&constEmpl_city="+constEmpl_city+"&constEmpl_phone="+constEmpl_phone+
+                "&constEmpl_fax="+constEmpl_fax+"&constEmpl_email="+constEmpl_email);
+        }
+
     </script>
-       
 
 </head>
     
@@ -124,7 +125,7 @@
                 </div>
         </div>
         
-        <form method="post"  id="paraskevastiki_form">
+        <form>
         <div class="col-md-12 column" name="paraskevastiki_form"> 
             
                 <h3>Στοιχεία Παρασκευαστικής Εραιρίας</h3>
@@ -136,81 +137,81 @@
                 <hr>
                 <br>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="constCompany-Name">Επωνυμία Επιχείρησης:</label>
+                    <label class="col-sm-3 control-label" for="constCompany_Name">Επωνυμία Επιχείρησης:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" id="constCompany-Name" required="true" name="constCompany-Name" type="text">
+                        <input class="form-control" id="constCompany_Name" required="true" name="constCompany_Name" type="text">
                     </div>
                 </div>
                 
                 <br><br>
                 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="constCompany-CommercialName">Εμπορική Επωνυμία Επιχείρησης:</label>
+                    <label class="col-sm-3 control-label" for="constCompany_CommercialName">Εμπορική Επωνυμία Επιχείρησης:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" id="constCompany-CommercialName" name="constCompany-CommercialName"type="text">
+                        <input class="form-control" id="constCompany_CommercialName" name="constCompany_CommercialName"type="text">
                     </div>
                 </div>
 
                 <br><br>
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="constCompany-OtherName">Άλλη Επωνυμία:</label>
+                    <label class="col-sm-3 control-label" for="constCompany_OtherName">Άλλη Επωνυμία:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" id="constCompany-OtherName" name="constCompany-OtherName" type="text">
+                        <input class="form-control" id="constCompany_OtherName" name="constCompany_OtherName" type="text">
                     </div>
                 </div>
 
                 <br><br>
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="constCompany-legalForm">Νομική Μορφή:</label>
+                    <label class="col-sm-3 control-label" for="constCompany_legalForm">Νομική Μορφή:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" id="constCompany-legalForm" required="true"  name="constCompany-legalForm" type="text">
+                        <input class="form-control" id="constCompany_legalForm" required="true"  name="constCompany_legalForm" type="text">
                     </div>
                 </div>
 
                 <br><br>
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="constCompany-CEO">Όνομα Διευθυντή:</label>
+                    <label class="col-sm-3 control-label" for="constCompany_CEO">Όνομα Διευθυντή:</label>
                     <div class="col-sm-4 ">
-                        <input class="form-control" id="constCompany-CEO" required="true" name="constCompany-CEO" type="text">
+                        <input class="form-control" id="constCompany_CEO" required="true" name="constCompany_CEO" type="text">
                     </div>
                 </div>
 
                 <br><br>
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="constCompany-Address">Διεύθυνση:</label>
+                    <label class="col-sm-3 control-label" for="constCompany_Address">Διεύθυνση:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" id="constCompany-Address" name="constCompany-Address" type="text">
+                        <input class="form-control" id="constCompany_Address" name="constCompany_Address" type="text">
                     </div>
                 </div>
 
                 <br><br>
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="constCompany-PC">T.K. :</label>
+                    <label class="col-sm-3 control-label" for="constCompany_PC">T.K. :</label>
                     <div class="col-sm-2">
-                        <input class="form-control" id="constCompany-PC" name="constCompany-PC" type="number">
+                        <input class="form-control" id="constCompany_PC" name="constCompany_PC" type="number">
                     </div>
                 </div>
 
                 <br><br>
                 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="constCompany-City">Πόλη:</label>
+                    <label class="col-sm-3 control-label" for="constCompany_City">Πόλη:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" id="constCompany-City" name="constCompany-City" type="text">
+                        <input class="form-control" id="constCompany_City" name="constCompany_City" type="text">
                     </div>
                 </div>
 
                 <br><br>
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label"  name="constCompany-country" for="constCompany-country">Χώρα:</label>
+                    <label class="col-sm-3 control-label"  name="constCompany_country" for="constCompany_country">Χώρα:</label>
                         <div class="col-sm-4">
-                            <select class="form-control" name="constCompany-country" id="constCompany-country">
+                            <select class="form-control" name="constCompany_country" id="constCompany_country">
                                 <option value="">--Choose your Country--</option>
                                 <option value="AF">Afghanistan</option>
                                 <option value="AX">Εland Islands</option>
@@ -463,36 +464,36 @@
                 <br><br>
               
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="constCompany-Phone">Τηλέφωνο:</label>
+                    <label class="col-sm-3 control-label" for="constCompany_Phone">Τηλέφωνο:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" name="constCompany-Phone" required="true" id="constCompany-Phone" type="number">
+                        <input class="form-control" name="constCompany_Phone" required="true" id="constCompany_Phone" type="number">
                     </div>
                 </div>
 
                 <br><br>
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="constCompany-fax">Φάξ:</label>
+                    <label class="col-sm-3 control-label" for="constCompany_fax">Φάξ:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" name="constCompany-fax" id="constCompany-fax" type="number">
+                        <input class="form-control" name="constCompany_fax" id="constCompany_fax" type="number">
                     </div>
                 </div>
 
                 <br><br>
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="constCompany-email">Ηλεκτρονικό Ταχυδρομείο:</label>
+                    <label class="col-sm-3 control-label" for="constCompany_email">Ηλεκτρονικό Ταχυδρομείο:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" name="constCompany-email"  required="true" id="constCompany-email" type="email">
+                        <input class="form-control" name="constCompany_email"  required="true" id="constCompany_email" type="email">
                     </div>
                 </div>
 
                 <br><br>
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="constCompany-info">Άλλες Πληροφορίες:</label>
+                    <label class="col-sm-3 control-label" for="constCompany_info">Άλλες Πληροφορίες:</label>
                     <div class="col-sm-4">
-                        <textarea class="form-control" rows="5" name="constCompany-info" id="constCompany-info"></textarea>
+                        <textarea class="form-control" rows="5" name="constCompany_info" id="constCompany_info"></textarea>
                     </div>
                 </div>
 
@@ -507,89 +508,95 @@
                 <hr>
                 <br>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="constEmpl-name">Όνομα:</label>
+                    <label class="col-sm-3 control-label" for="constEmpl_name">Όνομα:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" name="constEmpl-name" required="true" id="constEmpl-name" type="text">
+                        <input class="form-control" name="constEmpl_name" required="true" id="constEmpl_name" type="text">
                     </div>
                 </div>
 
                 <br><br>
             
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="constEmpl-Surname">Επίθετο:</label>
+                    <label class="col-sm-3 control-label" for="constEmpl_Surname">Επίθετο:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" name="constEmpl-Surname" required="true" id="constEmpl-Surname" type="text">
+                        <input class="form-control" name="constEmpl_Surname" required="true" id="constEmpl_Surname" type="text">
                     </div>
                 </div>
                 
                 <br><br>
                     
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="constEmpl-address">Διεύθυνση:</label>
+                    <label class="col-sm-3 control-label" for="constEmpl_address">Διεύθυνση:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" name="constEmpl-address" id="constEmpl-address" type="text">
+                        <input class="form-control" name="constEmpl_address" id="constEmpl_address" type="text">
                     </div>
                 </div>
                 
                 <br><br>
                 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="constEmpl-pc">T.K. :</label>
+                    <label class="col-sm-3 control-label" for="constEmpl_pc">T.K. :</label>
                     <div class="col-sm-2">
-                        <input class="form-control" name="constEmpl-pc" id="constEmpl-pc" type="number">
+                        <input class="form-control" name="constEmpl_pc" id="constEmpl_pc" type="number">
                     </div>
                 </div>
                 
                 <br><br>
                    
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="constEmpl-city">Πόλη:</label>
+                    <label class="col-sm-3 control-label" for="constEmpl_city">Πόλη:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" name="constEmpl-city" id="constEmpl-city" type="text">
+                        <input class="form-control" name="constEmpl_city" id="constEmpl_city" type="text">
                     </div>
                 </div>
                     
                 <br><br>
 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="constEmpl-phone">Τηλέφωνο:</label>
+                    <label class="col-sm-3 control-label" for="constEmpl_phone">Τηλέφωνο:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" name="constEmpl-phone" required="true" id="constEmpl-phone" type="number">
+                        <input class="form-control" name="constEmpl_phone" required="true" id="constEmpl_phone" type="number">
                     </div>
                 </div>
                 
                 <br><br>
                     
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="constEmpl-fax">Φάξ:</label>
+                    <label class="col-sm-3 control-label" for="constEmpl_fax">Φάξ:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" name="constEmpl-fax" id="constEmpl-fax" type="number">
+                        <input class="form-control" name="constEmpl_fax" id="constEmpl_fax" type="number">
                     </div>
                 </div>
                     
                 <br><br>
                 
                 <div class="form-group">
-                    <label class="col-sm-3 control-label" for="constEmpl-email">Ηλεκτρονικό Ταχυδρομείο:</label>
+                    <label class="col-sm-3 control-label" for="constEmpl_email">Ηλεκτρονικό Ταχυδρομείο:</label>
                     <div class="col-sm-4">
-                        <input class="form-control" name="constEmpl-email" required="true" id="constEmpl-email" type="email">
+                        <input class="form-control" name="constEmpl_email" required="true" id="constEmpl_email" type="email">
                     </div>
+
                 </div>
                 
                 <br><br>
-            </div>
-            
+         
         </div>
-            <div class="col-md-4 column"  style="text-align: left">
-        	   <input id="ButtonPrevious" class="btn btn-default" type="button" value="Previous"  disabled="disabled" name="" onclick="handleWizardPrevious()" />
-		    </div>
-            <div class="col-sm-4"></div>
-		    <div class="col-md-4 column" style="text-align: right">
-                <input id="ButtonNext" class="btn btn-default" type="button" value="Next" onclick="handleWizardNext();" name="Step2" onClick="handleWizardNext()" />
-		    </div>
+            </div>
+             <br><br>
+            <div class="row">
+                <div class="col-md-4 column"  style="text-align: left">
+                   <input id="ButtonPrevious1" class="btn btn-default" type="button" value="Previous"  disabled="disabled" name=""! />
+                </div>
+                <div class="col-sm-4"></div>
+                <div class="col-md-4 column" style="text-align: right">
+                    <input id="ButtonNext1" class="btn btn-default" class="paraskevastiki_button" type="button" value="Next" name="Step2" onclick="PostDataPaeaskevastiki()"/>
+                </div>
+            </div>
         </form>
+        
     </div>
-    
+
+
     
 </body>
     
