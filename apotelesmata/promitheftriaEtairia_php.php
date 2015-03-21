@@ -1,40 +1,32 @@
 
 <?php
+
 if($_POST){
-    ini_set('default_charset','utf-8');
-    $db = 'teedb';
-    $username = 'root';
-    $password = '';
+        $con =mysql_connect("localhost", "root", "");
+        mysql_select_db("teedb");
+        mysql_query ("set character_set_results='utf8'");
 
-    // Create connection
-    $conn = new mysqli('localhost', $username, $password, $db);
+        if (!$con)
+                echo "Cannot connect: ".mysql_error();
+        else{
+                mysql_select_db("root", $con);
+                mysql_query ("set character_set_results='utf8'");
+        }
+                
 
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    } 
-    
-    
-    if(!isset($_SERVER['HTTP_X_REQUESTED_WITH']) AND strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') {
-		
-		$output = json_encode(array( //create JSON data
-			'type'=>'error', 
-			'text' => 'Sorry Request must be Ajax POST'
-		));
-		die($output); //exit script outputting json data
-    } 
-	
-	//Sanitize input data using PHP filter_var().
 	$num	= filter_var($_POST["num"], FILTER_SANITIZE_STRING);
 	$companyName		= filter_var($_POST["companyName"], FILTER_SANITIZE_STRING);
-    $productName		= filter_var($_POST["productName"], FILTER_SANITIZE_STRING);
     
-    $sql = "SELECT Distinct Company.* FROM `Company` ";
-    $sql .="WHERE Company.Company_Name=$companyName";
-    $result = $conn->query($sql); 
-    if ($result->num_rows == 1) {
-            // output data of each row
-            $row = $result->fetch_assoc();
+    
+
+   
+
+
+    
+   $sql = mysql_query("SELECT Distinct Company.* FROM `Company` WHERE Company.Company_Name='".$companyName."'",$con);
+    $row = mysql_fetch_array($sql);
+    
+    if ($row) {
             $Name=$row["Company_Name"]; 
             $Ls=$row["Lequl_State"];
             $Address=$row["Address"]; 
@@ -50,15 +42,27 @@ if($_POST){
             $Oname=$row["Other_Name"]; 
             $Ceo=$row["CEO"]; 
             $Country=$row["Country"]; 
-             } 
-             else {
-                    echo "0 results";
-                }
-               
+    } 
+  $sql1 = mysql_query("SELECT Distinct Comperson.* FROM `Comperson` WHERE Comperson.Telephone='".$Person."'",$con);
+    $row1 = mysql_fetch_array($sql1);
     
-    $output = json_encode(array('Name'=>$Name, 'Ls' => $Ls,'Address'=>$Address,'PostCode'=>$PostCode,'City'=>$City,'Telephone'=>$Telephone,'Fax'=>$Fax,'Email'=>$Email,'info'=>$info,'Type'=>$Type,'Person'=>$Person,'ComName'=>$ComName,'Oname'=>$Oname,'Ceo'=>$Ceo,'Country'=>$Country));
+    if ($row1) {
+            $NamePer=$row1["Name"]; 
+            $SurnamePer=$row1["Surname"];
+            $AddressPer=$row1["Address"]; 
+            $TelephonePer=$row1["Telephone"]; 
+            $CityPer=$row1["City"];  
+            $FaxPer=$row1["Fax"]; 
+            $EmailPer=$row1["Email"]; 
+            $PostCodePer=$row1["PostCode"];
+
+    } 
+    $output = json_encode(array('Name'=>$Name, 'Ls' => $Ls,'Address'=>$Address,'PostCode'=>$PostCode,'City'=>$City,'Telephone'=>$Telephone,'Fax'=>$Fax,'Email'=>$Email,'info'=>$info,'Type'=>$Type,'Person'=>$Person,'ComName'=>$ComName,'Oname'=>$Oname,'Ceo'=>$Ceo,'Country'=>$Country,'NamePer'=>$NamePer,'SurnamePer'=>$SurnamePer,'AddressPer'=>$AddressPer,'TelephonePer'=>$TelephonePer,'CityPer'=>$CityPer,'FaxPer'=>$FaxPer,'EmailPer'=>$EmailPer,'PostCodePer'=>$PostCodePer));
+
+   
+
 		die($output);
-	$conn->close(); 
+	$con->close(); 
 }
 
 ?>

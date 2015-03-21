@@ -1,28 +1,29 @@
     <?php 
-        $db = 'teedb';
-        $username = 'root';
-        $password = '';
+        
 
-        // Create connection
-        $conn = new mysqli('localhost', $username, $password, $db);
+$con =mysql_connect("localhost", "root", "");
+            mysql_select_db("teedb");
+            mysql_query ("set character_set_results='utf8'");
 
-        // Check connection
-        if ($conn->connect_error) {
-            echo "error";
-            die("Connection failed: " . $conn->connect_error);
-        } 
+            if (!$con)
+                echo "Cannot connect: ".mysql_error();
+            else{
+                mysql_select_db("root", $con);
+                mysql_query ("set character_set_results='utf8'");
+            
+            }
         $date=htmlspecialchars($_GET["date"]);
         $product=htmlspecialchars($_GET["name"]);
         $company=htmlspecialchars($_GET["company"]);
+        
+       
+        $sql1 = mysql_query("SELECT DISTINCT *  FROM `company` Where Company.Company_Name='".$company."'",$con);
+        $row1 = mysql_fetch_array($sql1);
+   
+        $sql2 = mysql_query("SELECT DISTINCT comperson.* FROM `comperson`,`company` Where Company.Company_Name='".$company."' and comperson.Telephone=company.Person",$con);
+        $row2 = mysql_fetch_array($sql2);
 
-        $sql1 = "SELECT DISTINCT *  FROM `company` ";
-        $sql1 .="Where Company.Company_Name='$company' ";
-        $result1 = $conn->query($sql1);
-    
-        $sql2 = "SELECT DISTINCT comperson.* FROM `comperson`,`company` ";
-        $sql2 .="Where Company.Company_Name='$company' and comperson.Telephone=company.Person";
-        $result2 = $conn->query($sql2);
-        if ($result1->num_rows == 1) {
+        /*if ($result1->num_rows == 1) {
                 $row1 = $result1->fetch_assoc();
                 echo $row1['Person'];
         }
@@ -34,7 +35,7 @@
         }
         else{
                 echo $result2->num_rows;
-        }
+        }*/
             
 ?>
 <!DOCTYPE html>

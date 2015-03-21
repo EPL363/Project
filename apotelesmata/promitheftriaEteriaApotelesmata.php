@@ -1,23 +1,19 @@
 <?php 
+    
+    $product=$_GET["name"];
+    
+    $con =mysql_connect("localhost", "root", "");
+            mysql_select_db("teedb");
+            mysql_query ("set character_set_results='utf8'");
 
-    $db = 'teedb';
-    $username = 'root';
-    $password = '';
-
-    // Create connection
-    $conn = new mysqli('localhost', $username, $password, $db);
-    mysql_query ("set character_set_results='utf8'");
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    } 
-    echo "Connected successfully";
-    /*$date=htmlspecialchars($_GET["date"]);
-    $product=htmlspecialchars($_GET["name"]);
-    $company=htmlspecialchars($_GET["company"]);*/
-    $sql1 = mysql_query("SELECT Distinct Company.* FROM `Product`,`Supply`,`Company` ";
-    $sql1 .="WHERE Supply.Product='maria' and Company.Company_Name=Supply.Supplier");
-  /*  $result1 = $conn->query($sql1);*/
+            if (!$con)
+                echo "Cannot connect: ".mysql_error();
+            else{
+                mysql_select_db("root", $con);
+                mysql_query ("set character_set_results='utf8'");
+            }
+    $sql1 = mysql_query("SELECT Distinct Company.* FROM `Product`,`Supply`,`Company` WHERE Supply.Product='".$product."' and Company.Company_Name=Supply.Supplier", $con);
+    $row1 = mysql_fetch_array($sql1);
 ?>
 <!DOCTYPE html>
 <html>
@@ -48,15 +44,15 @@
                         name=$(this).find("td.c2").html();
                         company=$(this).find("td.c3").html();
                         var proceed = true;
-                        
+                       
                         if(proceed) {
                             post_data = {
                                 'num'		: number,
-                                'productName'		: name,
-                                'companyName'		: company
+                                'companyName'		: name
                                 };
-                             
+                           
                             $.post('promitheftriaEtairia_php.php', post_data, function(response){
+                         
                                   $('#suplCompany-Name').text(response.Name);  
                                   $('#suplCompany-legalForm').text(response.Ls);
                                   $('#suplCompany-Address').text(response.Address);
@@ -67,7 +63,16 @@
                                   $('#suplCompany-email').text(response.Email);
                                   $('#suplCompany-info').text(response.info);
                                   $('#suplCompany-CEO').text(response.Ceo);
-
+                    
+                                
+                                  $('#Name').text(response.NamePer);  
+                                  $('#constSurname').text(response.SurnamePer);
+                                  $('#constaddress').text(response.AddressPer);
+                                  $('#constpc').text(response.PostCodePer);
+                                  $('#constcity').text(response.CityPer);
+                                  $('#constphone').text(response.TelephonePer);
+                                  $('#constfax').text(response.FaxPer);
+                                  $('#constemail').text(response.EmailPer);
                             }, 'json');
                         }
                     
@@ -94,11 +99,20 @@
                    <th>Επωνυμία Προμηθεύτριας Εταιρίας</th>
                    <th>ΔΔΑ</th>
                 </tr>
+                <?php
+                    $i=0;
+                     while ($row1){
+                ?>
                 <tr id="row<?php echo $i?>" data-toggle="modal" data-target="#suplCompanyModal" class="click" >
                         <td class="c1"><?php echo $i ?></td>
                         <td class="c2"><?php echo $row1["Company_Name"]?></td>
                         <td class="c3"><?php echo $row1["Address"]?></td>
-                </tr>   
+                </tr>
+                <?php
+                    $i=$i+1;
+                   $row1 = mysql_fetch_array($sql1);
+                    }
+                ?>
             </table>
             
             <!-- Modal -->
@@ -203,7 +217,7 @@
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label" for="suplCompany-info">Άλλες Πληροφορίες:</label>
                                             <div class="col-sm-4">
-                                                <label rows="5" id="suplCompany-info"></label>
+                                                <label id="suplCompany-info"></label>
                                             </div>
                                         </div>
 
@@ -212,15 +226,13 @@
                                     </div>
                                     <br><br>
                                     <!--------------------------------------------------------------------------------------------------------------------------------->
-
                                     <div class="row">
                                         <h4>Στοιχεία Υπεύθυνου Επικοινωνίας</h4><br>
-                                        
                                         <br>
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label" for="constEmpl-name">Όνομα:</label>
                                             <div class="col-sm-4">
-                                                <label id="constEmpl-name" ><?php  echo $row2["Company_Name"];?></label>
+                                               <label id="Name"></label>
                                             </div>
                                         </div>
 
@@ -229,7 +241,7 @@
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label" for="constEmpl-Surname">Επίθετο:</label>
                                             <div class="col-sm-4">
-                                               <label id="constEmpl-Surname"><?php  echo $row2["Company_Name"];?></label>
+                                               <label id="constSurname"></label>
                                             </div>
                                         </div>
 
@@ -238,7 +250,7 @@
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label" for="constEmpl-address">Διεύθυνση:</label>
                                             <div class="col-sm-4">
-                                                <label id="constEmpl-address" ><?php  echo $row2["Company_Name"];?></label>
+                                                <label id="constaddress" ></label>
                                             </div>
                                         </div>
 
@@ -247,7 +259,7 @@
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label" for="constEmpl-pc">T.K. :</label>
                                             <div class="col-sm-2">
-                                                <label id="constEmpl-pc" ><?php  echo $row2["Company_Name"];?></label>
+                                                <label id="constpc" ></label>
                                             </div>
                                         </div>
 
@@ -256,7 +268,7 @@
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label" for="constEmpl-city">Πόλη:</label>
                                             <div class="col-sm-4">
-                                                <label id="constEmpl-city" ><?php  echo $row2["Company_Name"];?></label>
+                                                <label id="constcity" ></label>
                                             </div>
                                         </div>
 
@@ -265,7 +277,7 @@
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label" for="constEmpl-phone">Τηλέφωνο:</label>
                                             <div class="col-sm-4">
-                                                <label id="constEmpl-phone"><?php  echo $row2["Company_Name"];?></label>
+                                                <label id="constphone"></label>
                                             </div>
                                         </div>
 
@@ -274,7 +286,7 @@
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label" for="constEmpl-fax">Φάξ:</label>
                                             <div class="col-sm-4">
-                                                <label id="constEmpl-fax" ><?php  echo $row2["Company_Name"];?></label>
+                                                <label id="constfax" ></label>
                                             </div>
                                         </div>
 
@@ -283,7 +295,7 @@
                                         <div class="form-group">
                                             <label class="col-sm-3 control-label" for="constEmpl-email">Ηλεκτρονικό Ταχυδρομείο:</label>
                                             <div class="col-sm-4">
-                                                <label id="constEmpl-email" ><?php  echo $row2["Company_Name"];?></label>
+                                                <label id="constemail" ></label>
                                             </div>
                                         </div>
 
@@ -307,7 +319,6 @@
         </div>
  
     </div> 
-    <input type="button" id="new" value="new"></input>
     </body>
 </html>
     

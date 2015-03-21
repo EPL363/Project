@@ -83,8 +83,8 @@
                       <div class="tab-content" style="height:100%"><!-- Tab panes -->
                           <div role="tabpanel" class="tab-pane active" id="Constractor" ><?php include "paraskevastikiEteriaApotelesmata.php";?></div> 
                           <div role="tabpanel" class="tab-pane" id="Supply"><?php include 'promitheftriaEteriaApotelesmata.php';?></div>
-                          <div role="tabpanel" class="tab-pane" id="Product"><?php include '../stixiaProiontosApotelesmata.php';?></div>
-                          <div role="tabpanel" class="tab-pane" id="chemicalSub"><?php include '../stixiaChimikonOusionApotelesmata.php';?>
+                          <div role="tabpanel" class="tab-pane" id="Product"><?php include 'stixiaProiontosApotelesmata.php';?></div>
+                          <div role="tabpanel" class="tab-pane" id="chemicalSub"><?php include 'stixiaChimikonOusionApotelesmata.php';?>
                       </div>
                 </div>
            </div>
